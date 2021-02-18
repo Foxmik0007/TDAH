@@ -18,13 +18,18 @@ import java.util.List;
 
 public class loadingToLogin extends AppCompatActivity {
 
+
+    //Creation base de donnees locale
     public static ArrayList<humain> listeUtilisateur = new ArrayList<humain>();
     private DatabaseReference loginDatabase;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_loading_to_login );
 
+        //Instanciation de la base de donnee
         loginDatabase = FirebaseDatabase.getInstance().getReference("UserInformation");
 
         Handler handler = new Handler();

@@ -23,9 +23,9 @@ public class Login extends AppCompatActivity {
     private EditText userName, password;
     private Button connect, register;
 
-    public static humain currentUser;
+    private static humain currentUser;
 
-    public static ArrayList<humain> listUser = loadingToLogin.getListeUtilisateur();
+    private static ArrayList<humain> listUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +36,13 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.loginPassword);
         connect = (Button) findViewById(R.id.loginConnect);
         register = (Button) findViewById(R.id.loginRegister);
-
         currentUser = new humain();
 
         String adminName = new String("Admin");
         String adminPassword= new String("ABC");
 
+        //Transfert de la base de donnees locale vers activité suivante
+        listUser = loadingToLogin.getListeUtilisateur();
 
         connect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,17 +52,18 @@ public class Login extends AppCompatActivity {
                 String idConnect = userName.getText().toString();
                 String idpassword = password.getText().toString();
 
-                // Verification profil utilisateur
+                // Verification profil utilisateur Si administrateur
                 if (idConnect.equals(adminName) && idpassword.equals(adminPassword)) {
                     Intent intent = new Intent( getApplicationContext(), MainActivity.class );
                     startActivity( intent );
                 }
 
-                //Verification
+                //Creation d'un utilisateur provisoire
                 currentUser.setUsername( idConnect );
                 currentUser.setPassword( idpassword );
 
-                for (short i = 0; i <= listUser.size(); i++){
+                //Verification profil utilisateur si present
+                for (short i = 0; i < listUser.size(); i++){
                     if (currentUser.getUsername().equals(listUser.get(i).getUsername()) &&
                             currentUser.getPassword().equals( listUser.get(i).getPassword() )) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -72,7 +74,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        //Creer un compte utlisateur
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,4 +84,9 @@ public class Login extends AppCompatActivity {
         });
 
     }
+
+    public static humain getCurrentUser() {
+        return currentUser;
+    }
+
 }
