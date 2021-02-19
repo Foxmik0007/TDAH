@@ -25,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView) findViewById( R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
+
         //Selection de Menufragment comme fragment d'accueil
+        if(savedInstanceState == null){
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new MenuFragment()).commit();
+         }
     }
 
     //Manipulation de la barre de tache
