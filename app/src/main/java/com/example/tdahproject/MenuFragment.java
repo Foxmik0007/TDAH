@@ -1,5 +1,6 @@
 package com.example.tdahproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +31,8 @@ public class MenuFragment extends Fragment {
         taskCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getContext(), taskCreation.class);
+                startActivity(intent);
 
             }
         });
