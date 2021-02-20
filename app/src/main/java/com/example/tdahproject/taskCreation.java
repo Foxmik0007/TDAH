@@ -99,7 +99,7 @@ public class taskCreation extends AppCompatActivity {
                     difficulté = "Medium";
             }
         });
-        checkBoxHard.setOnClickListener(new View.OnClickListener() {
+        checkBoxHard.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
                 if(checkBoxHard.isChecked())
