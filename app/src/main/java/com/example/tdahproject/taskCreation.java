@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class taskCreation extends AppCompatActivity {
 
+    public static humain currentUser;
 
     private EditText nomDeObjectif;
     private EditText nomDeTache;
@@ -44,9 +45,12 @@ public class taskCreation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_creation);
 
+        //Recuperation de l'utilisateur actuel
+        currentUser = MainActivity.getCurrentUser();
+
         //Configuration de la base de données
         //Creer un path personnel pour chaque utilisateur mais necessite d'abord l'acces au données de l'utilisateur
-        GOALDATABASE = FirebaseDatabase.getInstance().getReference("Liste des Objectifs");
+        GOALDATABASE = FirebaseDatabase.getInstance().getReference( "Données Utilisateur/" + currentUser.getUsername()  + "/Liste des Objectifs");
 
         //Button
         confirmerCreation = (Button) findViewById(R.id.confirmGoalCreation);

@@ -41,6 +41,8 @@ public class Login extends AppCompatActivity {
         String adminName = new String("Admin");
         String adminPassword= new String("ABC");
 
+        humain Admin = new humain(adminName,adminPassword);
+
         //Transfert de la base de donnees locale vers activité suivante
         listUser = loadingToLogin.getListeUtilisateur();
 
@@ -55,6 +57,7 @@ public class Login extends AppCompatActivity {
                 // Verification profil utilisateur Si administrateur
                 if (idConnect.equals(adminName) && idpassword.equals(adminPassword)) {
                     Intent intent = new Intent( getApplicationContext(), MainActivity.class );
+                    currentUser = Admin;
                     startActivity( intent );
                 }
 

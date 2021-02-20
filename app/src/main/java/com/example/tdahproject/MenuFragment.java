@@ -9,13 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class MenuFragment extends Fragment {
 
     View view;
-    Button taskCreate;
-
+    private Button taskCreate;
+    private TextView welcoming;
+    public static humain currentUser;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -26,7 +28,13 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate( R.layout.fragment_menu, container, false );
 
+        //Recuperation de l'utilisateur actuel
+        currentUser = MainActivity.getCurrentUser();
+
         taskCreate = (Button) view.findViewById(R.id.task_create);
+        welcoming = (TextView) view.findViewById(R.id.textViewWelcome);
+
+        welcoming.setText("Welcome, " + currentUser.getUsername());
 
         taskCreate.setOnClickListener(new View.OnClickListener() {
             @Override
