@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Registration">
 
     <TextView
@@ -12,6 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:text="Register"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#B1DDCF"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,19 +25,23 @@
     <EditText
         android:id="@+id/registerName"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="36dp"
+        android:background="@drawable/custom_input_login"
         android:ems="10"
         android:hint="Enter your name"
         android:inputType="textPersonName"
+        android:paddingStart="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        android:textColorHint="#B3B3CC"/>
 
     <EditText
         android:id="@+id/registerUsername"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Enter your new Username"
@@ -40,51 +49,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerName" />
+        app:layout_constraintTop_toBottomOf="@+id/registerName"
+        android:background="@drawable/custom_input_login"
+        android:paddingStart="20dp"
+        android:textColorHint="#B3B3CC"
+        />
 
     <EditText
         android:id="@+id/registerEmailAdress"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/custom_input_login"
         android:ems="10"
         android:hint="Enter your email adress"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/registerUsername"
+        android:paddingStart="20dp"
+        android:textColorHint="#B3B3CC"/>
 
     <EditText
         android:id="@+id/registerDateBirth"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/custom_input_login"
         android:ems="10"
         android:hint="Date of birth"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmailAdress" />
+        app:layout_constraintTop_toBottomOf="@+id/registerEmailAdress"
+        android:paddingStart="20dp"
+        android:textColorHint="#B3B3CC"/>
 
     <EditText
         android:id="@+id/registerPassword"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
+        android:background="@drawable/custom_input_login"
         android:ems="10"
         android:hint="Set your new password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerDateBirth" />
+        app:layout_constraintTop_toBottomOf="@+id/registerDateBirth"
+        android:paddingStart="20dp"
+        android:textColorHint="#B3B3CC"/>
 
     <Button
         android:id="@+id/registrationConfirm"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
+        android:backgroundTint="#2F54ADC3"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
