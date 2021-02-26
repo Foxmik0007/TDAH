@@ -26,6 +26,8 @@ public class MessageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
 
+
+        //Creation d'humain provisoire.
         humain moi = new humain("Charles", "Weird");
         humain lui = new humain("Elisa","Strange");
 
@@ -47,7 +49,6 @@ public class MessageFragment extends Fragment {
         view = inflater.inflate( R.layout.fragment_message, container, false );
         recyclerView = (RecyclerView) view.findViewById(R.id.message_recyclerView);
         RecycleViewMessage recycleViewMessage = new RecycleViewMessage(getContext(), messageList);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recycleViewMessage);
 

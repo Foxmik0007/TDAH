@@ -42,20 +42,21 @@ public class Registration extends AppCompatActivity {
                 String newDate = date.getText().toString().trim();
                 String newPassword = password.getText().toString().trim();
 
-                humain newUser = new humain(newName, newUserName, newEmail, newDate, newPassword);
+                //Gestion des erreurs
+                if (newName.equals(" ") || newUserName.equals(" ") || newEmail.equals(" ") || newDate.equals(" ") || newPassword.equals(" "))
+                    Toast.makeText(Registration.this, "Error - Please review your registration", Toast.LENGTH_SHORT).show();
+                else{
 
-                registrationDatabase.child(newUserName).setValue(newUser);
-                Toast.makeText(Registration.this, "Inscription Validée", Toast.LENGTH_SHORT).show();
+                    //Enregistrement de l'utilisateur
+                    humain newUser = new humain(newName, newUserName, newEmail, newDate, newPassword);
+                    registrationDatabase.child(newUserName).setValue(newUser);
+                    Toast.makeText(Registration.this, "Inscription Validée", Toast.LENGTH_SHORT).show();
 
+                    /*Validation de l'inscription*/
 
-                /*Validation de l'inscription*/
-
-                Intent intent = new Intent(getApplicationContext(), Login.class);
-                startActivity( intent );
-
-
-
-
+                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                    startActivity( intent );
+                }
             }
         });
     }
