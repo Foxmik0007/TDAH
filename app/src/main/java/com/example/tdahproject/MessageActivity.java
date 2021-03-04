@@ -1,25 +1,19 @@
 package com.example.tdahproject;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
+import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
-public class MessageFragment extends Fragment {
+public class MessageActivity extends AppCompatActivity {
+
 
     humain currentUser = MainActivity.getCurrentUser();
     View view;
@@ -29,11 +23,10 @@ public class MessageFragment extends Fragment {
     private Button send;
     EditText messageSend;
 
-    private DatabaseReference messageDatabase;
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_message);
 
         //Creation d'humain provisoire.
         humain moi = new humain("Charles", "Weird");
@@ -47,16 +40,6 @@ public class MessageFragment extends Fragment {
         messageList.add(a);
         messageList.add(b);
 
-
-    }
-
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        view = inflater.inflate( R.layout.fragment_message, container, false );
         recyclerView = (RecyclerView) view.findViewById(R.id.message_recyclerView);
 
         send = (Button) view.findViewById(R.id.messagesend);
@@ -71,17 +54,11 @@ public class MessageFragment extends Fragment {
                 gestionMessage(currentUser, messageSend);
             }
         });
-
-        // Inflate the layout for this fragment
-        return view;
-
     }
 
-
-    // Actualisation de la liste à l'Ecran
     public void actualiser (){
-        RecycleViewMessage recycleViewMessage = new RecycleViewMessage(getContext(), messageList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        RecycleViewMessage recycleViewMessage = new RecycleViewMessage(getApplicationContext(), messageList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MessageActivity.this));
         recyclerView.setAdapter(recycleViewMessage);
 
     }

@@ -16,6 +16,7 @@ public class Message {
     }
 
 
+
     public String getContenu() {
         return contenu;
     }
