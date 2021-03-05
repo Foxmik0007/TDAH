@@ -34,6 +34,8 @@ public class RecyclerViewContact extends RecyclerView.Adapter<RecyclerViewContac
         v = LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(v);
 
+
+
         return myViewHolder;
     }
 
@@ -45,12 +47,7 @@ public class RecyclerViewContact extends RecyclerView.Adapter<RecyclerViewContac
        holder.contactLastMessage.setText(contactList.get(position).getContenu());
        holder.contactName.setText(contactList.get(position).getEmetteur().getUsername());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
     }
 
     @Override

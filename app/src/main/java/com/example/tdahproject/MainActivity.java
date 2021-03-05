@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                             fragmentSelected = new TaskFragment();
                             break;
                         case R.id.messageFragment:
-                            fragmentSelected = new ContactFragment();
+                            fragmentSelected = new MessageFragment();
                             break;
                         case R.id.calendarFragment:
                             fragmentSelected = new CalendarFragment();

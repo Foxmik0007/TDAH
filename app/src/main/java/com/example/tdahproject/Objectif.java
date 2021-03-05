@@ -21,6 +21,12 @@ public class Objectif {
         this.dateDeCreation = dateDeCreation;
     }
 
+//temporaire
+    public Objectif(String nom, String difficulté) {
+        this.nom = nom;
+        this.difficulté = difficulté;
+    }
+
     public String getNom() {
         return nom;
     }

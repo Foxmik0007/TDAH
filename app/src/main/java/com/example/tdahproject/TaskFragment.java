@@ -18,7 +18,7 @@ public class TaskFragment extends Fragment {
 
     View v;
     private RecyclerView recyclerView;
-    private List<Task> taskList;
+    private List<Objectif> taskList;
 
     public TaskFragment() {
         // Required empty public constructor
@@ -43,20 +43,11 @@ public class TaskFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         taskList = new ArrayList<>();
-        taskList.add(new Task("Mario", "Checher des champignons",R.drawable.images));
-        taskList.add(new Task("Tigre", "Recherche",R.drawable.tigre));
-        taskList.add(new Task("Jacke", "Meeting à 5h du soir", R.drawable.person));
-        taskList.add(new Task("Mario", "Checher des champignons",R.drawable.images));
-        taskList.add(new Task("Tigre", "Recherche",R.drawable.tigre));
-        taskList.add(new Task("Jacke", "Meeting à 5h du soir", R.drawable.person));
-        taskList.add(new Task("Mario", "Checher des champignons",R.drawable.images));
-        taskList.add(new Task("Tigre", "Recherche",R.drawable.tigre));
-        taskList.add(new Task("Jacke", "Meeting à 5h du soir", R.drawable.person));
-        taskList.add(new Task("Mario", "Checher des champignons",R.drawable.images));
-        taskList.add(new Task("Tigre", "Recherche",R.drawable.tigre));
-        taskList.add(new Task("Jacke", "Meeting à 5h du soir", R.drawable.person));
-        taskList.add(new Task("Mario", "Checher des champignons",R.drawable.images));
-        taskList.add(new Task("Tigre", "Recherche",R.drawable.tigre));
-        taskList.add(new Task("Jacke", "Meeting à 5h du soir", R.drawable.person));
+
+        Objectif obj = new Objectif("Perdre 5kg", "Moyenne");
+        Objectif obj2 = new Objectif("Manger en Chine", "Difficile");
+
+        taskList.add(obj);
+        taskList.add(obj2);
     }
 }

@@ -1,10 +1,13 @@
 package com.example.tdahproject;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +19,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     Context mContext;
-    List<Task> mData;
+    List<Objectif> ListeDesObjectifs;
 
-    public RecyclerViewAdapter(Context mContext, List<Task> mData) {
+    public RecyclerViewAdapter(Context mContext, List<Objectif> mData) {
         this.mContext = mContext;
-        this.mData = mData;
+        this.ListeDesObjectifs = mData;
     }
 
 
@@ -39,29 +42,45 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.task_name.setText(mData.get(position).getName());
-        holder.task_Description.setText(mData.get(position).getDescription());
-        holder.imageView.setImageResource(mData.get(position).getPicture());
+
+        //Gestion du code couleur
+        if (ListeDesObjectifs.get(position).getDifficulté().equals("Difficile"))
+            holder.task_name.setBackgroundColor(Color.RED);
+
+        if (ListeDesObjectifs.get(position).getDifficulté().equals("Moyenne"))
+            holder.task_name.setBackgroundColor(Color.parseColor("#f2f593"));
+
+        if (ListeDesObjectifs.get(position).getDifficulté().equals("Easy"))
+            holder.task_name.setBackgroundColor(Color.GREEN);
+
+        holder.task_name.setText(ListeDesObjectifs.get(position).getNom());
+        holder.task_diffiulty.setText(ListeDesObjectifs.get(position).getDifficulté());
+        //holder.imageView.setImageResource(ListeDesObjectifs.get(position).getPicture());
+        holder.task_steps.setText("Liste des taches");
+        holder.progressBar.setProgress(37);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return ListeDesObjectifs.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView task_name;
-        private TextView task_Description;
-        private ImageView imageView;
+        private TextView task_diffiulty;
+        private TextView task_steps;
+        private ProgressBar progressBar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             task_name = (TextView) itemView.findViewById(R.id.task_name);
-            task_Description = (TextView) itemView.findViewById(R.id.task_description);
-            imageView = (ImageView) itemView.findViewById(R.id.image_task);
+            task_diffiulty = (TextView) itemView.findViewById(R.id.task_difficulty);
+            task_steps = (TextView) itemView.findViewById(R.id.task_steps);
+            progressBar = (ProgressBar) itemView.findViewById(R.id.task_progressBar);
         }
     }
 }

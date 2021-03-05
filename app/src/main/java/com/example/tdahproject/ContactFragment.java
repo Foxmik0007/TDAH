@@ -1,5 +1,6 @@
 package com.example.tdahproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -39,6 +40,9 @@ public class ContactFragment extends Fragment {
         contactList.add(a);
         contactList.add(b);
 
+        RecyclerViewContact recyclerViewContact = new RecyclerViewContact(getContext(), contactList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(recyclerViewContact);
     }
 
     @Override
@@ -46,16 +50,13 @@ public class ContactFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.contact_recycleView);
-
         actualiser();
         // Inflate the layout for this fragment
         return view;
     }
 
     public void actualiser (){
-        RecyclerViewContact recyclerViewContact = new RecyclerViewContact(getContext(), contactList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(recyclerViewContact);
+
 
     }
 }
