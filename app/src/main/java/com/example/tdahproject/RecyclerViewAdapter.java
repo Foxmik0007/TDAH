@@ -44,10 +44,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         //Gestion du code couleur
-        if (ListeDesObjectifs.get(position).getDifficulté().equals("Difficile"))
+        if (ListeDesObjectifs.get(position).getDifficulté().equals("Hard"))
             holder.task_name.setBackgroundColor(Color.RED);
 
-        if (ListeDesObjectifs.get(position).getDifficulté().equals("Moyenne"))
+        if (ListeDesObjectifs.get(position).getDifficulté().equals("Medium"))
             holder.task_name.setBackgroundColor(Color.parseColor("#f2f593"));
 
         if (ListeDesObjectifs.get(position).getDifficulté().equals("Easy"))
@@ -56,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.task_name.setText(ListeDesObjectifs.get(position).getNom());
         holder.task_diffiulty.setText(ListeDesObjectifs.get(position).getDifficulté());
         //holder.imageView.setImageResource(ListeDesObjectifs.get(position).getPicture());
-        holder.task_steps.setText("Liste des taches");
+        holder.task_steps.setText("Next Step : ");
         holder.progressBar.setProgress(37);
 
 

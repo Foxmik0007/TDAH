@@ -18,7 +18,7 @@ public class TaskFragment extends Fragment {
 
     View v;
     private RecyclerView recyclerView;
-    private List<Objectif> taskList;
+    private ArrayList<Objectif> taskList = loadingToLobby.getListDesObjectifs();
 
     public TaskFragment() {
         // Required empty public constructor
@@ -42,12 +42,5 @@ public class TaskFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        taskList = new ArrayList<>();
-
-        Objectif obj = new Objectif("Perdre 5kg", "Moyenne");
-        Objectif obj2 = new Objectif("Manger en Chine", "Difficile");
-
-        taskList.add(obj);
-        taskList.add(obj2);
     }
 }

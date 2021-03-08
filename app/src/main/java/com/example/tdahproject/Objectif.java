@@ -9,6 +9,7 @@ public class Objectif {
     private String importance;
     ArrayList<tache> listeDeTache;
     private String dateDeCreation;
+    short progression = 0;
 
     public Objectif() {
     }

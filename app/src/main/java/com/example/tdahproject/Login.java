@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
 
                 // Verification profil utilisateur Si administrateur
                 if (idConnect.equals(adminName) && idpassword.equals(adminPassword)) {
-                    Intent intent = new Intent( getApplicationContext(), MainActivity.class );
+                    Intent intent = new Intent( getApplicationContext(), loadingToLobby.class );
                     currentUser = Admin;
                     startActivity( intent );
                 }
@@ -69,7 +69,7 @@ public class Login extends AppCompatActivity {
                 for (short i = 0; i < listUser.size(); i++){
                     if (currentUser.getUsername().equals(listUser.get(i).getUsername()) &&
                             currentUser.getPassword().equals( listUser.get(i).getPassword() )) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), loadingToLobby.class);
                         startActivity(intent);
                     }
                 }

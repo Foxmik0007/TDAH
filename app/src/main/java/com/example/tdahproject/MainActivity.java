@@ -10,13 +10,19 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private NavController myController;
     public static humain currentUser;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,4 +74,5 @@ public class MainActivity extends AppCompatActivity {
     public static humain getCurrentUser() {
         return currentUser;
     }
+
 }

@@ -160,6 +160,8 @@ public class taskCreation extends AppCompatActivity {
                 GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
                 Toast.makeText(taskCreation.this, "Objectif ajoutée", Toast.LENGTH_SHORT).show();
 
+                loadingToLobby.getListDesObjectifs().add(nouvelObjectif);
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
