@@ -1,8 +1,9 @@
 package com.example.tdahproject;
 
 public class tache {
-    String nom;
-    String durée;
+   private String nom;
+   private String durée;
+   private String statut = "In progress";
 
     public tache() {
     }
@@ -26,5 +27,9 @@ public class tache {
 
     public void setDurée(String durée) {
         this.durée = durée;
+    }
+
+    public String getStatut() {
+        return statut;
     }
 }

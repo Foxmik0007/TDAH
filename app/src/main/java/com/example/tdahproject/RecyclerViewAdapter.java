@@ -56,7 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.task_name.setText(ListeDesObjectifs.get(position).getNom());
         holder.task_diffiulty.setText(ListeDesObjectifs.get(position).getDifficulté());
         //holder.imageView.setImageResource(ListeDesObjectifs.get(position).getPicture());
-        holder.task_steps.setText("Next Step : ");
+        holder.task_steps.setText("Next step : " + ListeDesObjectifs.get(position).getNextStep());
         holder.progressBar.setProgress(37);
 
 

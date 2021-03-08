@@ -67,4 +67,15 @@ public class Objectif {
     public void setDateDeCreation(String dateDeCreation) {
         this.dateDeCreation = dateDeCreation;
     }
+
+    public String getNextStep (){
+        String prox = new String();
+        for (short i = 0; i < listeDeTache.size(); i++){
+            if (listeDeTache.get(i).getStatut().equals("In progress")){
+                prox = listeDeTache.get(i).getNom();
+                break;
+            }
+        }
+        return  prox;
+    }
 }
