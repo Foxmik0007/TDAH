@@ -5,6 +5,7 @@ public class tache {
    private String durée;
    private String statut = "In progress";
 
+
     public tache() {
     }
 
@@ -31,5 +32,9 @@ public class tache {
 
     public String getStatut() {
         return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 }

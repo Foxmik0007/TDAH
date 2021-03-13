@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6C6C6C"
+    android:background="#e6e6e6"
     tools:context=".TaskFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_recycleView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -68,14 +68,23 @@ public class Objectif {
         this.dateDeCreation = dateDeCreation;
     }
 
-    public String getNextStep (){
-        String prox = new String();
+    public short getProgression() {
+        return progression;
+    }
+
+    public void setProgression(short progression) {
+        this.progression = progression;
+    }
+
+    public tache getNextStep (){
+        tache prox = new tache();
         for (short i = 0; i < listeDeTache.size(); i++){
             if (listeDeTache.get(i).getStatut().equals("In progress")){
-                prox = listeDeTache.get(i).getNom();
+                prox = listeDeTache.get(i);
                 break;
             }
         }
         return  prox;
     }
+
 }

@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.item_task, parent, false);
+
         MyViewHolder vHolder = new MyViewHolder (v);
 
         return vHolder;
@@ -54,11 +56,23 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.task_name.setBackgroundColor(Color.GREEN);
 
         holder.task_name.setText(ListeDesObjectifs.get(position).getNom());
-        holder.task_diffiulty.setText(ListeDesObjectifs.get(position).getDifficulté());
+        //holder.task_diffiulty.setText(ListeDesObjectifs.get(position).getDifficulté());
         //holder.imageView.setImageResource(ListeDesObjectifs.get(position).getPicture());
-        holder.task_steps.setText("Next step : " + ListeDesObjectifs.get(position).getNextStep());
-        holder.progressBar.setProgress(37);
+        holder.task_steps.setText("Next: " + ListeDesObjectifs.get(position).getNextStep().getNom());
 
+        holder.progressBar.setProgress(calculProgress(ListeDesObjectifs.get(position)));
+
+        //Ajout du support de la base de données plus tard
+        holder.validerTache.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListeDesObjectifs.get(position).getNextStep().setStatut("Complete");
+
+                //Mise à jour de ce qu'on voit à l'ecran
+                holder.progressBar.setProgress(calculProgress(ListeDesObjectifs.get(position)));
+                holder.task_steps.setText("Next step : " + ListeDesObjectifs.get(position).getNextStep().getNom());
+            }
+        });
 
     }
 
@@ -73,6 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView task_diffiulty;
         private TextView task_steps;
         private ProgressBar progressBar;
+        private Button validerTache;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +96,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             task_diffiulty = (TextView) itemView.findViewById(R.id.task_difficulty);
             task_steps = (TextView) itemView.findViewById(R.id.task_steps);
             progressBar = (ProgressBar) itemView.findViewById(R.id.task_progressBar);
+            validerTache = (Button) itemView.findViewById(R.id.validerTache);
         }
+
+    }
+
+
+    //Calcul de la progression de la tache
+    public int calculProgress (Objectif unObjectif){
+        int currentProgress = 0;
+        int ordreDeProgression = 100 / unObjectif.getListeDeTache().size();
+        for (short i = 0; i < unObjectif.getListeDeTache().size(); i++){
+            if (unObjectif.getListeDeTache().get(i).getStatut().equals("In progress"))
+                currentProgress = currentProgress + 0;
+            else
+                currentProgress = currentProgress + ordreDeProgression;
+        }
+        return currentProgress;
     }
 }
