@@ -9,17 +9,20 @@ public class Objectif {
     private String importance;
     ArrayList<tache> listeDeTache;
     private String dateDeCreation;
-    short progression = 0;
+    int progression;
+    private tache nextStep;
 
     public Objectif() {
     }
 
-    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation) {
+    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression) {
         this.nom = nom;
         this.difficulté = difficulté;
         this.importance = importance;
         this.listeDeTache = listeDeTache;
         this.dateDeCreation = dateDeCreation;
+        this.progression = progression;
+
     }
 
 //temporaire
@@ -68,11 +71,11 @@ public class Objectif {
         this.dateDeCreation = dateDeCreation;
     }
 
-    public short getProgression() {
+    public int getProgression() {
         return progression;
     }
 
-    public void setProgression(short progression) {
+    public void setProgression(int progression) {
         this.progression = progression;
     }
 

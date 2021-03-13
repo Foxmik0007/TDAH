@@ -183,56 +183,27 @@
             android:textColorHint="#B3B3CC"
             android:textColor="@color/white"/>
 
-        <TextView
-            android:id="@+id/textview14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="sans-serif-thin"
-            android:text="Add date"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/durationCreation" />
-
-        <EditText
-            android:id="@+id/taskCreation_startingDate"
-            android:layout_width="192dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/custom_input_login"
-            android:hint="Add date of start"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview14"
-            android:paddingStart="10dp"
-            android:textColorHint="#B3B3CC"
-            android:textColor="@color/white"/>
-
         <Button
             android:id="@+id/confirmGoalCreation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="132dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="136dp"
+            android:layout_marginTop="116dp"
             android:backgroundTint="#41FFFFFF"
             android:text="Confirm"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/taskCreation_startingDate"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonAddStep" />
 
         <Button
             android:id="@+id/buttonAddStep"
             android:layout_width="119dp"
             android:layout_height="42dp"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="52dp"
             android:backgroundTint="#2DFFFFFF"
             android:text="Add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.031"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/durationCreation"
             app:layout_constraintTop_toBottomOf="@+id/stepName_creation" />
 

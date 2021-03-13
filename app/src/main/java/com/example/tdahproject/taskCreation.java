@@ -16,7 +16,9 @@ import com.google.firebase.FirebaseApiNotAvailableException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class taskCreation extends AppCompatActivity {
 
@@ -25,7 +27,7 @@ public class taskCreation extends AppCompatActivity {
     private EditText nomDeObjectif;
     private EditText nomDeTache;
     private EditText dureeDeTache;
-    private EditText dateDeCreation;
+    private String dateDeCreation;
     private Button confirmerCreation;
     private Button ajouterTache;
     private CheckBox checkBoxEasy;
@@ -60,7 +62,7 @@ public class taskCreation extends AppCompatActivity {
         nomDeObjectif = (EditText) findViewById(R.id.goalName_create);
         nomDeTache = (EditText) findViewById(R.id.stepName_creation);
         dureeDeTache = (EditText) findViewById(R.id.durationCreation);
-        dateDeCreation = (EditText) findViewById(R.id.taskCreation_startingDate);
+
         importance = (TextView) findViewById(R.id.lvlOfImportance);
 
         //CheckBox
@@ -70,6 +72,9 @@ public class taskCreation extends AppCompatActivity {
 
         //SeekBar
         seekBarImportance = (SeekBar) findViewById(R.id.seekBarImportance);
+
+        Calendar calendar = Calendar.getInstance();
+        dateDeCreation = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
         listeDeNouvelleTache = new ArrayList<>();
 
@@ -151,11 +156,13 @@ public class taskCreation extends AppCompatActivity {
             public void onClick(View v) {
                 Objectif nouvelObjectif = new Objectif();
 
+
                 nouvelObjectif.setNom(nomDeObjectif.getText().toString().trim());
-                nouvelObjectif.setDateDeCreation(dateDeCreation.getText().toString().trim());
+                nouvelObjectif.setDateDeCreation(dateDeCreation);
                 nouvelObjectif.setDifficulté(difficulté);
                 nouvelObjectif.setImportance(niveauImportance);
                 nouvelObjectif.setListeDeTache(listeDeNouvelleTache);
+                nouvelObjectif.setProgression(0);
 
                 GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
                 Toast.makeText(taskCreation.this, "Objectif ajoutée", Toast.LENGTH_SHORT).show();
