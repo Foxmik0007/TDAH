@@ -11,17 +11,19 @@ public class Objectif {
     private String dateDeCreation;
     int progression;
     private tache nextStep;
+    private String etat;
 
     public Objectif() {
     }
 
-    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression) {
+    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat) {
         this.nom = nom;
         this.difficulté = difficulté;
         this.importance = importance;
         this.listeDeTache = listeDeTache;
         this.dateDeCreation = dateDeCreation;
         this.progression = progression;
+        this.etat = etat;
 
     }
 
@@ -77,6 +79,14 @@ public class Objectif {
 
     public void setProgression(int progression) {
         this.progression = progression;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
     public tache getNextStep (){

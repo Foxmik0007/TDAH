@@ -163,6 +163,7 @@ public class taskCreation extends AppCompatActivity {
                 nouvelObjectif.setImportance(niveauImportance);
                 nouvelObjectif.setListeDeTache(listeDeNouvelleTache);
                 nouvelObjectif.setProgression(0);
+                nouvelObjectif.setEtat("IN PROCESS");
 
                 GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
                 Toast.makeText(taskCreation.this, "Objectif ajoutée", Toast.LENGTH_SHORT).show();
