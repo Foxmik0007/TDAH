@@ -13,10 +13,12 @@ public class Objectif {
     private tache nextStep;
     private String etat;
 
+    private Message messagerie;
+
     public Objectif() {
     }
 
-    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat) {
+    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat, Message messagerie) {
         this.nom = nom;
         this.difficulté = difficulté;
         this.importance = importance;
@@ -24,6 +26,8 @@ public class Objectif {
         this.dateDeCreation = dateDeCreation;
         this.progression = progression;
         this.etat = etat;
+
+        this.messagerie = messagerie;
 
     }
 
@@ -98,6 +102,15 @@ public class Objectif {
             }
         }
         return  prox;
+    }
+
+    public Message getMessagerie() {
+        return messagerie;
+    }
+
+
+    public void setMessagerie(Message messagerie) {
+        this.messagerie = messagerie;
     }
 
 }

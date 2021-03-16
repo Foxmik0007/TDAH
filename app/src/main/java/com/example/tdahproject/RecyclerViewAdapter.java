@@ -1,6 +1,7 @@
 package com.example.tdahproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -22,9 +23,12 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
 
+
     Context mContext;
-    List<Objectif> ListeDesObjectifs;
+    static List<Objectif> ListeDesObjectifs;
     DatabaseReference taskUpdateDatabase;
+    DatabaseReference userUpdateDatabase;
+    humain currentUser = MainActivity.getCurrentUser();
 
     public RecyclerViewAdapter(Context mContext, List<Objectif> mData) {
         this.mContext = mContext;
@@ -45,6 +49,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return vHolder;
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
@@ -53,8 +59,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
 
-        taskUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + MainActivity.getCurrentUser().getUsername() + "/Liste des Objectifs");
-
+        taskUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
+        userUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Main Task");
 
             //Gestion du code couleur
             if (ListeDesObjectifs.get(position).getDifficulté().equals("Hard"))
@@ -109,6 +115,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
+        holder.selectGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentUser.setObjectifEnCours(ListeDesObjectifs.get(position));
+                userUpdateDatabase.setValue(ListeDesObjectifs.get(position));
+            }
+        });
     }
 
     @Override
@@ -123,6 +136,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView task_steps;
         private ProgressBar progressBar;
         private Button validerTache;
+        private Button selectGoal;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -132,7 +146,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             task_steps = (TextView) itemView.findViewById(R.id.task_steps);
             progressBar = (ProgressBar) itemView.findViewById(R.id.task_progressBar);
             validerTache = (Button) itemView.findViewById(R.id.validerTache);
+            selectGoal = (Button) itemView.findViewById(R.id.selectObjective);
+
+
         }
+
 
     }
 
@@ -149,4 +167,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
         return currentProgress;
     }
+
 }

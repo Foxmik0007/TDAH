@@ -18,7 +18,7 @@ public class TaskFragment extends Fragment {
 
     View v;
     private RecyclerView recyclerView;
-    private ArrayList<Objectif> taskList = loadingToLobby.getListDesObjectifs();
+    public static ArrayList<Objectif> taskList = loadingToLobby.getListDesObjectifs();
 
     public TaskFragment() {
         // Required empty public constructor
@@ -42,5 +42,9 @@ public class TaskFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    public static ArrayList<Objectif> getTaskList() {
+        return taskList;
     }
 }

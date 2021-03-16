@@ -23,6 +23,7 @@ import java.util.Calendar;
 public class taskCreation extends AppCompatActivity {
 
     public static humain currentUser;
+    public static ArrayList <Objectif> listeDesObjectifs = loadingToLobby.getListDesObjectifs();
 
     private EditText nomDeObjectif;
     private EditText nomDeTache;
@@ -38,6 +39,8 @@ public class taskCreation extends AppCompatActivity {
     private String difficulté;
     private String niveauImportance;
     private ArrayList<tache> listeDeNouvelleTache;
+    private humain nouveauPartenaire;
+    private Message message;
 
     DatabaseReference GOALDATABASE;
 
@@ -73,6 +76,7 @@ public class taskCreation extends AppCompatActivity {
         //SeekBar
         seekBarImportance = (SeekBar) findViewById(R.id.seekBarImportance);
 
+        //Recuperation de la date d'aujoud'hui
         Calendar calendar = Calendar.getInstance();
         dateDeCreation = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
@@ -150,6 +154,9 @@ public class taskCreation extends AppCompatActivity {
             }
         });
 
+        //Mise en place de la messagerie
+        message = new Message("No message", currentUser, null);
+
         //Button de Confirmation de la creation
         confirmerCreation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,11 +171,14 @@ public class taskCreation extends AppCompatActivity {
                 nouvelObjectif.setListeDeTache(listeDeNouvelleTache);
                 nouvelObjectif.setProgression(0);
                 nouvelObjectif.setEtat("IN PROCESS");
+                nouvelObjectif.setMessagerie(message);
 
+                //Mise à jour de la base de donnée en ligne
                 GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
                 Toast.makeText(taskCreation.this, "Objectif ajoutée", Toast.LENGTH_SHORT).show();
 
-                loadingToLobby.getListDesObjectifs().add(nouvelObjectif);
+                //Mise à jour de la base de données locale
+
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);

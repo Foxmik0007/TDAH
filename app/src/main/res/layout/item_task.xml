@@ -81,11 +81,22 @@
         android:id="@+id/validerTache"
         android:layout_width="64dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:text="v"
         app:layout_constraintEnd_toStartOf="@+id/task_difficulty"
         app:layout_constraintTop_toBottomOf="@+id/task_name" />
+
+    <Button
+        android:id="@+id/selectObjective"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:text="Do"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/validerTache" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
