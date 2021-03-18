@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,9 +19,9 @@ import java.util.List;
 public class RecyclerViewContact extends RecyclerView.Adapter<RecyclerViewContact.MyViewHolder> {
 
     Context context;
-    List<Message>contactList;
+    List<humain>contactList;private AdapterView.OnItemClickListener mClickListener;
 
-    public RecyclerViewContact(Context context, List<Message> contactList) {
+    public RecyclerViewContact(Context context, List<humain> contactList) {
         this.context = context;
         this.contactList = contactList;
     }
@@ -34,8 +35,6 @@ public class RecyclerViewContact extends RecyclerView.Adapter<RecyclerViewContac
         v = LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(v);
 
-
-
         return myViewHolder;
     }
 
@@ -44,11 +43,12 @@ public class RecyclerViewContact extends RecyclerView.Adapter<RecyclerViewContac
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewContact.MyViewHolder holder, int position) {
        holder.contactId.setText("M");
-       holder.contactLastMessage.setText(contactList.get(position).getContenu());
-       holder.contactName.setText(contactList.get(position).getEmetteur().getUsername());
+       holder.contactLastMessage.setText(contactList.get(position).getEmail());
+       holder.contactName.setText(contactList.get(position).getUsername());
 
 
     }
+
 
     @Override
     public int getItemCount() {

@@ -75,13 +75,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.task_name.setText(ListeDesObjectifs.get(position).getNom());
             //holder.task_diffiulty.setText(ListeDesObjectifs.get(position).getDifficulté());
             //holder.imageView.setImageResource(ListeDesObjectifs.get(position).getPicture());
-            holder.task_steps.setText("Next: " + ListeDesObjectifs.get(position).getNextStep().getNom());
+            holder.task_steps.setText("Next step : " + ListeDesObjectifs.get(position).getNextStep().getNom());
 
             holder.progressBar.setProgress(calculProgress(ListeDesObjectifs.get(position)));
 
             //holder.task_diffiulty.setText(calculProgress(ListeDesObjectifs.get(position)));
 
 
+        if (holder.task_steps.getText().equals("Next step : " + null)){
+            holder.task_steps.setText("Congrats, You reach your Goal !!!");
+            //ListeDesObjectifs.remove(ListeDesObjectifs.get(position));
+        }
 
 
 
@@ -107,9 +111,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 if (!ListeDesObjectifs.get(position).getEtat().equals("FINISHED") ){
                     holder.task_steps.setText("Next step : " + ListeDesObjectifs.get(position).getNextStep().getNom());
-                } else {
-                    holder.task_steps.setText("Congrats, You reach your Goal !!!");
-                    ListeDesObjectifs.remove(ListeDesObjectifs.get(position));
                 }
 
             }

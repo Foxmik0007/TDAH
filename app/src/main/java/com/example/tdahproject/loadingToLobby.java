@@ -21,7 +21,9 @@ public class loadingToLobby extends AppCompatActivity {
 
 
     DatabaseReference USERSGOALS;
+    DatabaseReference USERSLIST;
     public static humain currentUser = Login.getCurrentUser();
+    public static ArrayList<humain> listeDesUtilisateurs = new ArrayList<humain>();
     public static ArrayList<Objectif> listDesObjectifs= new ArrayList<Objectif>();
 
     @Override
@@ -31,7 +33,7 @@ public class loadingToLobby extends AppCompatActivity {
 
         //Liaison à la bonne liste des données
         USERSGOALS = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
-
+        USERSLIST = FirebaseDatabase.getInstance().getReference("UserInformation");
 
         Handler handler = new Handler();
 
@@ -75,6 +77,28 @@ public class loadingToLobby extends AppCompatActivity {
             }
         });
 
+        USERSLIST.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    humain humain = dataSnapshot.getValue(humain.class);
+                    Boolean verify = false;
+
+                    for (short i = 0; i < listeDesUtilisateurs.size(); i++){
+                        if (humain.getName() == listeDesUtilisateurs.get(i).getName())
+                            verify = true;
+                    }
+                    if (!verify)
+                        listeDesUtilisateurs.add(humain);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
 
@@ -89,5 +113,13 @@ public class loadingToLobby extends AppCompatActivity {
 
     public static ArrayList<Objectif> getListDesObjectifs() {
         return listDesObjectifs;
+    }
+
+    public static ArrayList<humain> getListeDesUtilisateurs() {
+        return listeDesUtilisateurs;
+    }
+
+    public static void setListeDesUtilisateurs(ArrayList<humain> listeDesUtilisateurs) {
+        loadingToLobby.listeDesUtilisateurs = listeDesUtilisateurs;
     }
 }

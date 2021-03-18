@@ -16,6 +16,7 @@ public class MenuFragment extends Fragment {
 
     View view;
     private Button taskCreate;
+    private Button partnerSelect;
     private TextView welcoming;
     public static humain currentUser;
 
@@ -32,6 +33,7 @@ public class MenuFragment extends Fragment {
         currentUser = MainActivity.getCurrentUser();
 
         taskCreate = (Button) view.findViewById(R.id.task_create);
+        partnerSelect = (Button) view.findViewById(R.id.partnerSelect);
         welcoming = (TextView) view.findViewById(R.id.textViewWelcome);
 
         welcoming.setText("Welcome, " + currentUser.getUsername());
@@ -44,6 +46,16 @@ public class MenuFragment extends Fragment {
 
             }
         });
+
+        //Selection du partenaire
+        partnerSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), partnerSelect.class);
+                startActivity(intent);
+            }
+        });
+
         // Inflate the layout for this fragment
         return view;
     }

@@ -23,12 +23,13 @@ public class ContactFragment extends Fragment {
     humain currentUser = MainActivity.getCurrentUser();
     View view;
     private RecyclerView recyclerView;
-    private List<Message> contactList;
+    private List<humain> contactList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /*
         humain moi = new humain("Charles", "Weird");
         humain lui = new humain("Elisa","Strange");
 
@@ -43,6 +44,7 @@ public class ContactFragment extends Fragment {
         RecyclerViewContact recyclerViewContact = new RecyclerViewContact(getContext(), contactList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(recyclerViewContact);
+        */
     }
 
     @Override
