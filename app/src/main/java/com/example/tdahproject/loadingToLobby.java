@@ -22,6 +22,7 @@ public class loadingToLobby extends AppCompatActivity {
 
     DatabaseReference USERSGOALS;
     DatabaseReference USERSLIST;
+
     public static humain currentUser = Login.getCurrentUser();
     public static ArrayList<humain> listeDesUtilisateurs = new ArrayList<humain>();
     public static ArrayList<Objectif> listDesObjectifs= new ArrayList<Objectif>();

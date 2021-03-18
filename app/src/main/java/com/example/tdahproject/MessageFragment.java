@@ -21,6 +21,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class MessageFragment extends Fragment {
 
+
+
     humain currentUser = MainActivity.getCurrentUser();
     View view;
     private RecyclerView recyclerView;

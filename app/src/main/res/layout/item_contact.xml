@@ -64,13 +64,13 @@
                 android:text="Message"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintEnd_toStartOf="@+id/confirmPartner"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/cardView"
                 app:layout_constraintTop_toTopOf="parent"></TextView>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/confirmPartner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select"

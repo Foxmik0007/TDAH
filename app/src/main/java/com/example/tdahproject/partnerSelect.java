@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 public class partnerSelect extends AppCompatActivity {
@@ -27,6 +30,8 @@ public class partnerSelect extends AppCompatActivity {
         adapter= new RecyclerViewContact(this, ListeDesUtilisateurs);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+
 
     }
 }
