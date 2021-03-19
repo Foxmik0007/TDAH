@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -100,6 +101,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 //Verification de l'accomplissement de l'objectif
                 if (calculProgress(ListeDesObjectifs.get(position)) == 100){
                     ListeDesObjectifs.get(position).setEtat("FINISHED");
+                    holder.task_steps.setText("Congrats, You reach your Goal !!!");
+                        //ListeDesObjectifs.remove(ListeDesObjectifs.get(position));
+
                 }
 
                 //Mise à jour de la base de donnée
@@ -121,6 +125,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 currentUser.setObjectifEnCours(ListeDesObjectifs.get(position));
                 userUpdateDatabase.setValue(ListeDesObjectifs.get(position));
+                Toast.makeText(mContext, ListeDesObjectifs.get(position).getNom() + " is now the main task", Toast.LENGTH_SHORT).show();
             }
         });
     }

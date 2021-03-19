@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/messagebackv"
+    android:background="@drawable/white"
     tools:context=".MessageFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,8 @@
             android:layout_height="640dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:foregroundGravity="bottom"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,7 +35,8 @@
                 android:hint="Send a message"
                 android:padding="5dp"
                 android:textColor="#0099cc"
-                android:textColorHint="#e6f9ff"
+                android:textColorHighlight="#000000"
+                android:textColorHint="#48535353"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/messagesend"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -46,6 +48,7 @@
                 android:id="@+id/messagesend"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
+                android:backgroundTint="#8E8E8E"
                 android:text="Send"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -57,4 +60,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</LinearLayout>

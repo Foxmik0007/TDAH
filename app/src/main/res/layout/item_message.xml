@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/message_container"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:padding="10dp"
-    android:id="@+id/message_container">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -19,16 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:background="#A6478E86"
-            android:backgroundTint="#A14D7278">
+            >
 
             <TextView
                 android:id="@+id/sender_name"
-                android:layout_width="387dp"
-                android:layout_height="34dp"
-                android:background="@android:color/transparent"
-                android:backgroundTint="#CE57A69D"
-                android:fontFamily="@font/baloo_da"
+                android:layout_width="310dp"
+                android:layout_height="37dp"
+                android:background="#A657FDEA"
+                android:fontFamily="@font/marko_one"
                 android:paddingStart="20dp"
                 android:text="Name"
                 android:textSize="20dp"
@@ -41,9 +39,10 @@
                 android:id="@+id/message_Content"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/baloo"
+                android:background="#EFEEEE"
+                android:fontFamily="@font/asul"
                 android:paddingStart="30dp"
+                android:paddingBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,4 +54,4 @@
     </androidx.cardview.widget.CardView>
 
 
-</LinearLayout>
+</FrameLayout>
