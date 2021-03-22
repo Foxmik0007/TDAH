@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    android:layout_margin="10dp"
 
-    app:cardElevation="8dp"
-    android:layout_margin="8dp"
     android:layout_marginBottom="12dp"
-
+    android:orientation="horizontal"
     app:cardCornerRadius="20dp"
-    >
+
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-      >
+        >
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -28,90 +27,100 @@
             app:layout_constraintTop_toTopOf="parent"
 
 
-         >
+            >
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#0000ffff"
-    >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000ffff">
 
-    <TextView
-        android:id="@+id/task_name"
-        android:layout_width="426dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="3dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/task_name"
+                    android:layout_width="426dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="3dp"
+                    android:fontFamily="@font/patua_one"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/task_difficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name" />
+                <TextView
+                    android:id="@+id/task_difficulty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/task_name" />
 
-    <TextView
-        android:id="@+id/task_steps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name" />
+                <TextView
+                    android:id="@+id/task_steps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/patua_one"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/task_name" />
 
-    <ProgressBar
-        android:id="@+id/task_progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_steps"
-        app:layout_constraintVertical_bias="0.848" />
+                <ProgressBar
+                    android:id="@+id/task_progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="4dp"
+                    android:progressTint="#4CAF50"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/task_steps"
+                    app:layout_constraintVertical_bias="0.848" />
 
-    <Button
-        android:id="@+id/validerTache"
-        android:layout_width="64dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:text="v"
-        app:layout_constraintEnd_toStartOf="@+id/task_difficulty"
-        app:layout_constraintTop_toBottomOf="@+id/task_name" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/validerTache"
+                    android:layout_width="100dp"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/custom_button"
+                    android:fontFamily="@font/patua_one"
+                    android:text="finish task"
+                    app:layout_constraintEnd_toStartOf="@+id/task_difficulty"
+                    app:layout_constraintTop_toBottomOf="@+id/task_name" />
 
-    <Button
-        android:id="@+id/selectObjective"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:text="Do"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/validerTache" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/selectObjective"
+                    android:layout_width="146dp"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@drawable/custom_button"
+                    android:fontFamily="@font/patua_one"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="Set as main Goal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/validerTache"
+                    app:layout_constraintVertical_bias="0.466" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Progress :"
-        app:layout_constraintBottom_toTopOf="@+id/task_progressBar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_steps"
-        app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/patua_one"
+                    android:text="Progress :"
+                    app:layout_constraintBottom_toTopOf="@+id/task_progressBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/task_steps"
+                    app:layout_constraintVertical_bias="1.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 

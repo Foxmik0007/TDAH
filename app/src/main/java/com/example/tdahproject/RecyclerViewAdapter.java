@@ -30,6 +30,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     DatabaseReference taskUpdateDatabase;
     DatabaseReference userUpdateDatabase;
     humain currentUser = MainActivity.getCurrentUser();
+    public static Objectif currentGoal = new Objectif();
 
     public RecyclerViewAdapter(Context mContext, List<Objectif> mData) {
         this.mContext = mContext;
@@ -63,12 +64,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         taskUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
         userUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation/" + currentUser.getUsername() + "/Main Task");
 
+
             //Gestion du code couleur
             if (ListeDesObjectifs.get(position).getDifficulté().equals("Hard"))
                 holder.task_name.setBackgroundColor(Color.RED);
 
             if (ListeDesObjectifs.get(position).getDifficulté().equals("Medium"))
-                holder.task_name.setBackgroundColor(Color.parseColor("#f2f593"));
+                holder.task_name.setBackgroundColor(Color.parseColor("#ebf705"));
 
             if (ListeDesObjectifs.get(position).getDifficulté().equals("Easy"))
                 holder.task_name.setBackgroundColor(Color.GREEN);
@@ -144,6 +146,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private ProgressBar progressBar;
         private Button validerTache;
         private Button selectGoal;
+        private Drawable color;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -175,4 +178,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return currentProgress;
     }
 
+    public static Objectif getCurrentGoal() {
+        return currentGoal;
+    }
 }

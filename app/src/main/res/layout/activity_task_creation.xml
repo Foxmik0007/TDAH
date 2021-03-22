@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background"
+        android:background="@drawable/whitew"
         tools:context=".taskCreation">
 
         <TextView
@@ -30,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="48dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="@font/patua_one"
             android:text="Give a name to your goal :"
-            android:textColor="#FFFFFF"
+            android:textColor="#A5A5A5"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -45,13 +45,14 @@
             android:layout_marginTop="84dp"
             android:background="@drawable/custom_input_login"
             android:ems="10"
+            android:fontFamily="@font/patua_one"
             android:hint="New Goal name"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
             android:paddingStart="10dp"
-            android:textColorHint="#B3B3CC"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textColorHint="#BCBCBC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/textView9"
@@ -59,9 +60,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="@font/patua_one"
             android:text="Difficulty :"
-            android:textColor="#FFFFFF"
+            android:textColor="#B5B5B5"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/goalName_create" />
@@ -72,8 +73,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="208dp"
+            android:fontFamily="@font/patua_one"
             android:text="Easy"
-            android:textColor="#89EC35"
+            android:textColor="#8A8A8A"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -85,8 +87,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="208dp"
+            android:fontFamily="@font/patua_one"
             android:text="Medium"
-            android:textColor="#BC8D04"
+            android:textColor="#8A8A8A"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -98,8 +101,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="208dp"
+            android:fontFamily="@font/patua_one"
             android:text="Hard"
-            android:textColor="#D51E1E"
+            android:textColor="#8A8A8A"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView9"
@@ -111,15 +115,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="44dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="@font/patua_one"
             android:text="Importance"
-            android:textColor="#FFFFFF"
+            android:textColor="#B5B5B5"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxHard" />
 
         <SeekBar
             android:id="@+id/seekBarImportance"
+            style="@style/Widget.AppCompat.SeekBar"
             android:layout_width="177dp"
             android:layout_height="16dp"
             android:layout_marginStart="12dp"
@@ -133,7 +138,7 @@
             android:layout_height="38dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="@font/patua_one"
             android:textSize="22sp"
             app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/seekBarImportance" />
@@ -144,9 +149,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="@font/patua_one"
             android:text="Enter the steps : "
-            android:textColor="#FFFFFF"
+            android:textColor="#B5B5B5"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lvlOfImportance" />
@@ -159,13 +164,14 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/custom_input_login"
             android:ems="10"
+            android:fontFamily="@font/patua_one"
             android:hint="New step"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13"
             android:paddingStart="10dp"
-            android:textColorHint="#B3B3CC"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textColorHint="#BCBCBC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <EditText
             android:id="@+id/durationCreation"
@@ -175,44 +181,47 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/custom_input_login"
             android:ems="10"
+            android:fontFamily="@font/patua_one"
             android:hint="Add duration"
             android:inputType="time"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stepName_creation"
             android:paddingStart="10dp"
-            android:textColorHint="#B3B3CC"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textColorHint="#BCBCBC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stepName_creation" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/confirmGoalCreation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="136dp"
             android:layout_marginTop="116dp"
-            android:backgroundTint="#41FFFFFF"
             android:text="Confirm"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAddStep" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonAddStep"
+            android:background="@drawable/custom_button"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonAddStep"
             android:layout_width="119dp"
             android:layout_height="42dp"
             android:layout_marginStart="64dp"
             android:layout_marginTop="52dp"
-            android:backgroundTint="#2DFFFFFF"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/patua_one"
             android:text="Add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/durationCreation"
             app:layout_constraintTop_toBottomOf="@+id/stepName_creation" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/buttonChoosePartner"
             android:layout_width="172dp"
             android:layout_height="42dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="#2DFFFFFF"
+            android:background="@drawable/custom_button"
+            android:fontFamily="@font/patua_one"
             android:text="Choose Partner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.066"

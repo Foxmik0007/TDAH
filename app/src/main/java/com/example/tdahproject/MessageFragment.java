@@ -88,6 +88,7 @@ public class MessageFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 gestionMessage(currentUser, messageSend);
+                messageSend.setText(null);
             }
         });
 
