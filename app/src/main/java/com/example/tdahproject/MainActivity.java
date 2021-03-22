@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private NavController myController;
     public static humain currentUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         currentUser = Login.getCurrentUser();
+
 
         //Selection de Menufragment comme fragment d'accueil
         if(savedInstanceState == null){
@@ -74,5 +76,7 @@ public class MainActivity extends AppCompatActivity {
     public static humain getCurrentUser() {
         return currentUser;
     }
+
+
 
 }

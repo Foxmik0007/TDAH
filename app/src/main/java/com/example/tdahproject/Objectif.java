@@ -12,6 +12,7 @@ public class Objectif {
     int progression;
     private tache nextStep;
     private String etat;
+    private humain partner;
 
     private Message messagerie;
 
@@ -113,4 +114,11 @@ public class Objectif {
         this.messagerie = messagerie;
     }
 
+    public humain getPartner() {
+        return partner;
+    }
+
+    public void setPartner(humain partner) {
+        this.partner = partner;
+    }
 }

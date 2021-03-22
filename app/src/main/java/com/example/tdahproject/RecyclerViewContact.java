@@ -1,5 +1,6 @@
 package com.example.tdahproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -56,8 +57,10 @@ public class RecyclerViewContact extends RecyclerView.Adapter<RecyclerViewContac
            @Override
            public void onClick(View v) {
                currentUser.setPartenaire(contactList.get(position));
-               PARTNERDATABASE.setValue(contactList.get(position));
-               Toast.makeText(context, "Partenaire Ajouter", Toast.LENGTH_SHORT).show();
+               //PARTNERDATABASE.setValue(contactList.get(position));
+               taskCreation.setNouveauPartenaire(contactList.get(position));
+               Toast.makeText(context, "Partenaire Selected", Toast.LENGTH_SHORT).show();
+               ((Activity)context).finish();
            }
        });
 

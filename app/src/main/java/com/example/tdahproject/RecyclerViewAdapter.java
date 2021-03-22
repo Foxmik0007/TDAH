@@ -61,7 +61,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         taskUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
-        userUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Main Task");
+        userUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation/" + currentUser.getUsername() + "/Main Task");
 
             //Gestion du code couleur
             if (ListeDesObjectifs.get(position).getDifficulté().equals("Hard"))
@@ -123,8 +123,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.selectGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                currentUser.setObjectifEnCours(ListeDesObjectifs.get(position));
-                userUpdateDatabase.setValue(ListeDesObjectifs.get(position));
+                currentUser.setObjectifEnCours(ListeDesObjectifs.get(position).getNom());
+                userUpdateDatabase.setValue(ListeDesObjectifs.get(position).getNom());
+                currentUser.setPartenaire(ListeDesObjectifs.get(position).getPartner());
                 Toast.makeText(mContext, ListeDesObjectifs.get(position).getNom() + " is now the main task", Toast.LENGTH_SHORT).show();
             }
         });

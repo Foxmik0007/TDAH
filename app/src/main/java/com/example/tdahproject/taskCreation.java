@@ -31,6 +31,7 @@ public class taskCreation extends AppCompatActivity {
     private String dateDeCreation;
     private Button confirmerCreation;
     private Button ajouterTache;
+    private Button choosePartner;
     private CheckBox checkBoxEasy;
     private CheckBox checkBoxMedium;
     private CheckBox checkBoxHard;
@@ -39,8 +40,9 @@ public class taskCreation extends AppCompatActivity {
     private String difficulté;
     private String niveauImportance;
     private ArrayList<tache> listeDeNouvelleTache;
-    private humain nouveauPartenaire;
+    public static humain nouveauPartenaire;
     private Message message;
+    private Objectif nouvelObjectif = new Objectif();
 
     DatabaseReference GOALDATABASE;
 
@@ -60,6 +62,7 @@ public class taskCreation extends AppCompatActivity {
         //Button
         confirmerCreation = (Button) findViewById(R.id.confirmGoalCreation);
         ajouterTache = (Button) findViewById(R.id.buttonAddStep);
+        choosePartner = (Button) findViewById(R.id.buttonChoosePartner);
 
         //EditText and Textview
         nomDeObjectif = (EditText) findViewById(R.id.goalName_create);
@@ -154,15 +157,22 @@ public class taskCreation extends AppCompatActivity {
             }
         });
 
+        //Button settings du partenaire
+        choosePartner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), partnerSelect.class);
+                startActivity(intent);
+            }
+        });
+
         //Mise en place de la messagerie
-        message = new Message("No message", currentUser, null);
+        message = new Message();
 
         //Button de Confirmation de la creation
         confirmerCreation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Objectif nouvelObjectif = new Objectif();
-
 
                 nouvelObjectif.setNom(nomDeObjectif.getText().toString().trim());
                 nouvelObjectif.setDateDeCreation(dateDeCreation);
@@ -172,6 +182,7 @@ public class taskCreation extends AppCompatActivity {
                 nouvelObjectif.setProgression(0);
                 nouvelObjectif.setEtat("IN PROCESS");
                 nouvelObjectif.setMessagerie(message);
+                nouvelObjectif.setPartner(nouveauPartenaire);
 
                 //Mise à jour de la base de donnée en ligne
                 GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
@@ -179,12 +190,15 @@ public class taskCreation extends AppCompatActivity {
 
                 //Mise à jour de la base de données locale
 
-
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
 
 
+    }
+
+    public static void setNouveauPartenaire(humain nouveauPartenaire) {
+        taskCreation.nouveauPartenaire = nouveauPartenaire;
     }
 }

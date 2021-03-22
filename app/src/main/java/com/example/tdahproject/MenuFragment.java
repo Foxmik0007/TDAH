@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class MenuFragment extends Fragment {
 
@@ -59,4 +61,5 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         return view;
     }
-}
+
+    }

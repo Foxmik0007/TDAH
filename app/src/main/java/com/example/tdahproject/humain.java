@@ -6,7 +6,7 @@ public class humain {
     private String email;
     private String birthday;
     private String password;
-    private Objectif objectifEnCours = null;
+    private String objectifEnCours = null;
     private humain partenaire = null;
 
     public humain() {
@@ -65,11 +65,11 @@ public class humain {
         this.password = password;
     }
 
-    public Objectif getObjectifEnCours() {
+    public String getObjectifEnCours() {
         return objectifEnCours;
     }
 
-    public void setObjectifEnCours(Objectif objectifEnCours) {
+    public void setObjectifEnCours(String objectifEnCours) {
         this.objectifEnCours = objectifEnCours;
     }
 
