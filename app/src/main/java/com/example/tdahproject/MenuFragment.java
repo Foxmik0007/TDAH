@@ -52,6 +52,7 @@ public class MenuFragment extends Fragment {
 
         welcoming.setText("Welcome, " + currentUser.getUsername());
         currentTaskName.setText(currentUser.getObjectifEnCours());
+        setMenu();
 
         taskCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,5 +69,15 @@ public class MenuFragment extends Fragment {
 
 
     }
+
+    public void setMenu (){
+        for (short i = 0; i < loadingToLobby.getListDesObjectifs().size(); i++){
+            if (loadingToLobby.getListDesObjectifs().get(i).getNom().equals(currentUser.getObjectifEnCours())){
+                currentNextStep.setText(loadingToLobby.getListDesObjectifs().get(i).getNextStep().getNom());
+                currentDifficulty.setText(loadingToLobby.getListDesObjectifs().get(i).getDifficulté());
+            }
+        }
+    }
+
 
     }
