@@ -9,6 +9,7 @@ public class Objectif {
     private String importance;
     ArrayList<tache> listeDeTache;
     private String dateDeCreation;
+    private String dueDate;
     int progression;
     private tache nextStep;
     private String etat;
@@ -19,15 +20,15 @@ public class Objectif {
     public Objectif() {
     }
 
-    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat, Message messagerie) {
+    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat, Message messagerie, String dueDate) {
         this.nom = nom;
         this.difficulté = difficulté;
         this.importance = importance;
         this.listeDeTache = listeDeTache;
         this.dateDeCreation = dateDeCreation;
+        this.dueDate = dueDate;
         this.progression = progression;
         this.etat = etat;
-
         this.messagerie = messagerie;
 
     }
@@ -76,6 +77,14 @@ public class Objectif {
 
     public void setDateDeCreation(String dateDeCreation) {
         this.dateDeCreation = dateDeCreation;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 
     public int getProgression() {

@@ -1,12 +1,15 @@
 package com.example.tdahproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,7 +23,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class taskCreation extends AppCompatActivity {
+public class taskCreation extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     public static humain currentUser;
     public static ArrayList <Objectif> listeDesObjectifs = loadingToLobby.getListDesObjectifs();
@@ -29,9 +32,11 @@ public class taskCreation extends AppCompatActivity {
     private EditText nomDeTache;
     private EditText dureeDeTache;
     private String dateDeCreation;
+    private String dueDate;
     private Button confirmerCreation;
     private Button ajouterTache;
     private Button choosePartner;
+    private Button dueDateSelect;
     private CheckBox checkBoxEasy;
     private CheckBox checkBoxMedium;
     private CheckBox checkBoxHard;
@@ -63,6 +68,7 @@ public class taskCreation extends AppCompatActivity {
         confirmerCreation = (Button) findViewById(R.id.confirmGoalCreation);
         ajouterTache = (Button) findViewById(R.id.buttonAddStep);
         choosePartner = (Button) findViewById(R.id.buttonChoosePartner);
+        dueDateSelect = (Button) findViewById(R.id.btn_due_date_select);
 
         //EditText and Textview
         nomDeObjectif = (EditText) findViewById(R.id.goalName_create);
@@ -128,19 +134,19 @@ public class taskCreation extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (progress < 25){
-                    niveauImportance = "Pas important";
+                    niveauImportance = "Not Important";
                     importance.setText(niveauImportance);
                 }
                 if ( progress < 50 && progress > 25){
-                    niveauImportance = "Peu important";
+                    niveauImportance = "Not Very Important";
                     importance.setText(niveauImportance);
                 }
                 if ( progress < 75 && progress > 50){
-                    niveauImportance = "Assez important";
+                    niveauImportance = "Important";
                     importance.setText(niveauImportance);
                 }
                 if ( progress < 100 && progress > 75){
-                    niveauImportance = "Très important";
+                    niveauImportance = "Very Important";
                     importance.setText(niveauImportance);
                 }
 
@@ -166,6 +172,14 @@ public class taskCreation extends AppCompatActivity {
             }
         });
 
+        dueDateSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment dialogFragment = new DatePickerFragment();
+                dialogFragment.show(getSupportFragmentManager(), "Due Date");
+            }
+        });
+
         //Mise en place de la messagerie
         message = new Message();
 
@@ -176,6 +190,7 @@ public class taskCreation extends AppCompatActivity {
 
                 nouvelObjectif.setNom(nomDeObjectif.getText().toString().trim());
                 nouvelObjectif.setDateDeCreation(dateDeCreation);
+                nouvelObjectif.setDueDate(dueDate);
                 nouvelObjectif.setDifficulté(difficulté);
                 nouvelObjectif.setImportance(niveauImportance);
                 nouvelObjectif.setListeDeTache(listeDeNouvelleTache);
@@ -195,6 +210,16 @@ public class taskCreation extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR,year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        dueDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
 
     }
 

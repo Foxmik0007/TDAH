@@ -10,8 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class MenuFragment extends Fragment {
@@ -20,11 +26,14 @@ public class MenuFragment extends Fragment {
     private Button taskCreate;
     private TextView welcoming;
     private TextView currentTaskName;
-    public TextView currentNextStep;
-    public TextView currentDifficulty;
-    public TextView currentProgress;
-    public TextView currentImportance;
-    public TextView currentPartner;
+    private TextView currentNextStep;
+    private TextView currentDifficulty;
+    private TextView currentProgress;
+    private TextView currentImportance;
+    private TextView currentPartner;
+    private TextView currentStartDate;
+    private TextView currentDueDate;
+    private TextView currentRemainingTime;
     public static humain currentUser;
 
     public MenuFragment() {
@@ -34,7 +43,7 @@ public class MenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate( R.layout.fragment_menu, container, false );
+        view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         //Recuperation de l'utilisateur actuel
         currentUser = MainActivity.getCurrentUser();
@@ -47,7 +56,9 @@ public class MenuFragment extends Fragment {
         currentProgress = (TextView) view.findViewById(R.id.menu_progress);
         currentImportance = (TextView) view.findViewById(R.id.current_task_importance);
         currentPartner = (TextView) view.findViewById(R.id.current_partner_name);
-
+        currentStartDate = (TextView) view.findViewById(R.id.current_start_date);
+        currentDueDate = (TextView) view.findViewById(R.id.current_due_date);
+        currentRemainingTime = (TextView) view.findViewById(R.id.current_remaining_time);
 
         setMenu();
 
@@ -67,25 +78,53 @@ public class MenuFragment extends Fragment {
 
     }
 
-    public void setMenu (){
+    public void setMenu() {
+
         welcoming.setText("Welcome, " + currentUser.getUsername());
         currentTaskName.setText(currentUser.getObjectifEnCours());
-        for (short i = 0; i < loadingToLobby.getListDesObjectifs().size(); i++){
-            if (loadingToLobby.getListDesObjectifs().get(i).getNom().equals(currentUser.getObjectifEnCours())){
+
+        Calendar calendar = Calendar.getInstance();
+        String date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+
+        for (short i = 0; i < loadingToLobby.getListDesObjectifs().size(); i++) {
+            if (loadingToLobby.getListDesObjectifs().get(i).getNom().equals(currentUser.getObjectifEnCours())) {
                 currentNextStep.setText(loadingToLobby.getListDesObjectifs().get(i).getNextStep().getNom());
                 currentDifficulty.setText(loadingToLobby.getListDesObjectifs().get(i).getDifficulté());
                 currentImportance.setText(loadingToLobby.getListDesObjectifs().get(i).getImportance());
                 currentPartner.setText(loadingToLobby.getListDesObjectifs().get(i).getPartner().getName());
-                if (loadingToLobby.getListDesObjectifs().get(i).getProgression() > 98){
+                currentStartDate.setText(loadingToLobby.getListDesObjectifs().get(i).getDateDeCreation());
+                currentDueDate.setText(loadingToLobby.getListDesObjectifs().get(i).getDueDate());
+
+                getDaysDifference(date, loadingToLobby.getListDesObjectifs().get(i).getDueDate());
+
+                if (loadingToLobby.getListDesObjectifs().get(i).getProgression() > 98) {
                     currentProgress.setText("FINISHED");
-                }else
-                {
+                } else {
                     currentProgress.setText(loadingToLobby.getListDesObjectifs().get(i).getProgression() + "%");
                 }
+
 
             }
         }
     }
 
+    //Calcul des jours restants
+    public void getDaysDifference(String fromDate, String toDate) {
+        try {
+            Date date1;
+            Date date2;
+            SimpleDateFormat dates = new SimpleDateFormat("EEEE dd MMMM yyyy");
+            date1 = dates.parse(fromDate);
+            date2 = dates.parse(toDate);
+            long difference = Math.abs(date1.getTime() - date2.getTime());
+            long differenceDates = difference / (24 * 60 * 60 * 1000);
+            String dayDifference = Long.toString(differenceDates);
+            currentRemainingTime.setText(dayDifference + " days");
+        } catch (Exception exception) {
+            currentRemainingTime.setText("Error");
+        }
 
     }
+
+}
+
