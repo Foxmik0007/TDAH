@@ -20,20 +20,15 @@ public class MenuFragment extends Fragment {
     private Button taskCreate;
     private TextView welcoming;
     private TextView currentTaskName;
-    public static TextView currentNextStep;
-    public static TextView currentDifficulty;
+    public TextView currentNextStep;
+    public TextView currentDifficulty;
+    public TextView currentProgress;
+    public TextView currentImportance;
+    public TextView currentPartner;
     public static humain currentUser;
 
     public MenuFragment() {
         // Required empty public constructor
-    }
-
-    public static TextView getCurrentNextStep() {
-        return currentNextStep;
-    }
-
-    public static TextView getCurrentDifficulty() {
-        return currentDifficulty;
     }
 
     @Override
@@ -49,9 +44,11 @@ public class MenuFragment extends Fragment {
         currentTaskName = (TextView) view.findViewById(R.id.currentTaskName);
         currentNextStep = (TextView) view.findViewById(R.id.currentNextStep);
         currentDifficulty = (TextView) view.findViewById(R.id.currentTaskDifficulty);
+        currentProgress = (TextView) view.findViewById(R.id.menu_progress);
+        currentImportance = (TextView) view.findViewById(R.id.current_task_importance);
+        currentPartner = (TextView) view.findViewById(R.id.current_partner_name);
 
-        welcoming.setText("Welcome, " + currentUser.getUsername());
-        currentTaskName.setText(currentUser.getObjectifEnCours());
+
         setMenu();
 
         taskCreate.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +68,21 @@ public class MenuFragment extends Fragment {
     }
 
     public void setMenu (){
+        welcoming.setText("Welcome, " + currentUser.getUsername());
+        currentTaskName.setText(currentUser.getObjectifEnCours());
         for (short i = 0; i < loadingToLobby.getListDesObjectifs().size(); i++){
             if (loadingToLobby.getListDesObjectifs().get(i).getNom().equals(currentUser.getObjectifEnCours())){
                 currentNextStep.setText(loadingToLobby.getListDesObjectifs().get(i).getNextStep().getNom());
                 currentDifficulty.setText(loadingToLobby.getListDesObjectifs().get(i).getDifficulté());
+                currentImportance.setText(loadingToLobby.getListDesObjectifs().get(i).getImportance());
+                currentPartner.setText(loadingToLobby.getListDesObjectifs().get(i).getPartner().getName());
+                if (loadingToLobby.getListDesObjectifs().get(i).getProgression() > 98){
+                    currentProgress.setText("FINISHED");
+                }else
+                {
+                    currentProgress.setText(loadingToLobby.getListDesObjectifs().get(i).getProgression() + "%");
+                }
+
             }
         }
     }

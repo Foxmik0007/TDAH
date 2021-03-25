@@ -87,6 +87,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         if (holder.task_steps.getText().equals("Next step : " + null)){
             holder.task_steps.setText("Congrats, You reach your Goal !!!");
+            ListeDesObjectifs.get(position).setNextStep(null);
             //ListeDesObjectifs.remove(ListeDesObjectifs.get(position));
         }
 
@@ -108,17 +109,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 }
 
-                //Mise à jour de la base de donnée
-                taskUpdateDatabase.child(ListeDesObjectifs.get(position).getNom()).setValue(ListeDesObjectifs.get(position));
+
 
                 //Mise à jour de ce qu'on voit à l'ecran
                 holder.progressBar.setProgress(calculProgress(ListeDesObjectifs.get(position)));
-
+                ListeDesObjectifs.get(position).setProgression(calculProgress(ListeDesObjectifs.get(position)));
 
                 if (!ListeDesObjectifs.get(position).getEtat().equals("FINISHED") ){
                     holder.task_steps.setText("Next step : " + ListeDesObjectifs.get(position).getNextStep().getNom());
                 }
 
+                //Mise à jour de la base de donnée
+                taskUpdateDatabase.child(ListeDesObjectifs.get(position).getNom()).setValue(ListeDesObjectifs.get(position));
             }
         });
 

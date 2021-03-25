@@ -105,6 +105,10 @@ public class Objectif {
         return  prox;
     }
 
+    public void setNextStep(tache nextStep) {
+        this.nextStep = nextStep;
+    }
+
     public Message getMessagerie() {
         return messagerie;
     }
