@@ -26,9 +26,10 @@ public class CalendarFragment extends Fragment {
     private TextView yesterday;
     private TextView today;
     private TextView tomorrow;
-    public static ArrayList<tache> previousTaskList = new ArrayList<tache>();
-    public static ArrayList<tache> currentTaskList = new ArrayList<tache>();
-    public static ArrayList<tache> nextTaskList = new ArrayList<tache>();
+    public static ArrayList<Objectif>ListeObjectif = loadingToLobby.getListDesObjectifs();
+    public ArrayList<tache> previousTaskList = new ArrayList<tache>();
+    public ArrayList<tache> currentTaskList = new ArrayList<tache>();
+    public ArrayList<tache> nextTaskList = new ArrayList<tache>();
     Calendar currentDate = Calendar.getInstance();
 
 
@@ -45,7 +46,6 @@ public class CalendarFragment extends Fragment {
         String yDate = getYesterdayDateString();
         String tDate = getTomorrowDateString();
 
-
         tache manger = new tache("Aller au marcher", "2 heures" , "Manger" );
         //manger.setStatut("IN Progess");
         tache nager = new tache("Aller piscine", "1 heure 30 mn", "Apprendre nager");
@@ -53,15 +53,10 @@ public class CalendarFragment extends Fragment {
         tache etudier = new tache("ITI 1200", "3 heures", "etudier");
         //etudier.setStatut("IN Progress");
 
-        previousTaskList.add(manger);
-        previousTaskList.add(nager);
-        previousTaskList.add(etudier);
-
         currentTaskList.add(manger);
         currentTaskList.add(nager);
         currentTaskList.add(etudier);
 
-        nextTaskList.add(manger);
         nextTaskList.add(nager);
         nextTaskList.add(etudier);
 
@@ -102,18 +97,34 @@ public class CalendarFragment extends Fragment {
 
     }
 
+    public void previousCompleteTab (ArrayList<tache> listeDeTache, ArrayList<Objectif> listeObjectif){
+    for (short i = 0; i < listeObjectif.size(); i++){
+        for (short k = 0; i< listeObjectif.get(i).getListeDeTache().size(); k++){
+            if (listeObjectif.get(i).getListeDeTache().get(k).getDateFin().equals(getYesterdayDateString()))
+                listeDeTache.add(listeObjectif.get(i).getListeDeTache().get(k));
+        }
+    }
+    }
+
+    //Date Getters
+    private String getCurrentDateString(){
+        Calendar date = Calendar.getInstance();
+        String currentDate =  DateFormat.getDateInstance(DateFormat.FULL).toString();
+
+        return currentDate;
+    }
     private String getYesterdayDateString() {
         DateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         return dateFormat.format(cal.getTime());
     }
-
     private String getTomorrowDateString() {
         DateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, +1);
         return dateFormat.format(cal.getTime());
     }
+
 
 }

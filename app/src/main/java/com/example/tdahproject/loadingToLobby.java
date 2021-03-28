@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,10 +26,14 @@ public class loadingToLobby extends AppCompatActivity {
 
     DatabaseReference USERSGOALS;
     DatabaseReference USERSLIST;
+    DatabaseReference USERPREVIOUSTASK;
+    DatabaseReference USERNEXTTASK;
 
     public static humain currentUser = Login.getCurrentUser();
     public static ArrayList<humain> listeDesUtilisateurs = new ArrayList<humain>();
     public static ArrayList<Objectif> listDesObjectifs= new ArrayList<Objectif>();
+    public static ArrayList<tache> previousListeTache = new ArrayList<tache>();
+    public static ArrayList<tache> nextListeTache = new ArrayList<tache>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class loadingToLobby extends AppCompatActivity {
         //Liaison à la bonne liste des données
         USERSGOALS = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
         USERSLIST = FirebaseDatabase.getInstance().getReference("UserInformation");
+        previousCompleteTab(previousListeTache, listDesObjectifs);
 
         Handler handler = new Handler();
 
@@ -145,5 +151,14 @@ public class loadingToLobby extends AppCompatActivity {
 
     public static void setListeDesUtilisateurs(ArrayList<humain> listeDesUtilisateurs) {
         loadingToLobby.listeDesUtilisateurs = listeDesUtilisateurs;
+    }
+
+    public void previousCompleteTab (ArrayList<tache> listeDeTache, ArrayList<Objectif> listeObjectif){
+        for (short i = 0; i < listeObjectif.size(); i++){
+            for (short k = 0; i< listeObjectif.get(i).getListeDeTache().size(); k++){
+                if (listeObjectif.get(i).getListeDeTache().get(k).getDateFin().equals(getYesterdayDateString()))
+                    listeDeTache.add(listeObjectif.get(i).getListeDeTache().get(k));
+            }
+        }
     }
 }

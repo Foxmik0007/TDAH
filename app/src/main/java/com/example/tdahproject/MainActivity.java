@@ -16,14 +16,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private NavController myController;
     public static humain currentUser;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
     public static humain getCurrentUser() {
         return currentUser;
     }
-
 
 
 }
