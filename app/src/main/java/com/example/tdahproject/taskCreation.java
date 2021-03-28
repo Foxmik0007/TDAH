@@ -96,7 +96,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(View v) {
                 // Creer un tableau de tache et utiliser les setters si ne marche pas
-                tache nouvelleTache = new tache(nomDeTache.getText().toString().trim(), dureeDeTache.getText().toString().trim());
+                tache nouvelleTache = new tache(nomDeTache.getText().toString().trim(), dureeDeTache.getText().toString().trim(), nomDeObjectif.getText().toString());
                listeDeNouvelleTache.add(nouvelleTache);
 
                 nomDeTache.setText(null);

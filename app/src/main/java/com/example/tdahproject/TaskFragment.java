@@ -20,6 +20,7 @@ public class TaskFragment extends Fragment {
     private RecyclerView recyclerView;
     public static ArrayList<Objectif> taskList = loadingToLobby.getListDesObjectifs();
 
+
     public TaskFragment() {
         // Required empty public constructor
     }

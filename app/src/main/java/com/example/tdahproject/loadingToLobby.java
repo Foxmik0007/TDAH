@@ -15,7 +15,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class loadingToLobby extends AppCompatActivity {
 
@@ -102,6 +105,26 @@ public class loadingToLobby extends AppCompatActivity {
 
     }
 
+
+    //Date Getters
+    private String getCurrentDateString(){
+        Calendar date = Calendar.getInstance();
+        String currentDate =  DateFormat.getDateInstance(DateFormat.FULL).toString();
+
+        return currentDate;
+    }
+    private String getYesterdayDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        return dateFormat.format(cal.getTime());
+    }
+    private String getTomorrowDateString() {
+        DateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, +1);
+        return dateFormat.format(cal.getTime());
+    }
 
     //Getters
     public static humain getCurrentUser() {

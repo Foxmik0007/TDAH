@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
@@ -31,6 +33,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     DatabaseReference userUpdateDatabase;
     humain currentUser = MainActivity.getCurrentUser();
     public static Objectif currentGoal = new Objectif();
+    Calendar date = Calendar.getInstance();
+    String finishDate = DateFormat.getDateInstance(DateFormat.FULL).format(date.getTime());
 
     public RecyclerViewAdapter(Context mContext, List<Objectif> mData) {
         this.mContext = mContext;
@@ -98,8 +102,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
 
+
                 //Mise à jour des données
+                ListeDesObjectifs.get(position).getNextStep().setDateFin(finishDate);
                 ListeDesObjectifs.get(position).getNextStep().setStatut("Complete");
+
 
                 //Verification de l'accomplissement de l'objectif
                 if (calculProgress(ListeDesObjectifs.get(position)) == 100){

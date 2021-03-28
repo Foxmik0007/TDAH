@@ -43,7 +43,7 @@ public class loadingToLogin extends AppCompatActivity {
                 finish();
             }
 
-        }, 1250);
+        }, 2000);
     }
 
     // Gestion de la base de donnée
