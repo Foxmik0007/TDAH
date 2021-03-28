@@ -8,8 +8,8 @@ public class humain {
     private String password;
     private String objectifEnCours = null;
     private humain partenaire = null;
-    private int niveau;
-    private int experience;
+    private int niveau = 0;
+    private int experience = 0;
 
     public humain() {
     }
@@ -89,7 +89,7 @@ public class humain {
         return niveau;
     }
 
-    public void setNiveau(short niveau) {
+    public void setNiveau(int niveau) {
         this.niveau = niveau;
     }
 
@@ -97,7 +97,7 @@ public class humain {
         return experience;
     }
 
-    public void setExperience(short experience) {
+    public void setExperience(int experience) {
         this.experience = experience;
     }
 }
