@@ -21,6 +21,6 @@
         android:title="Calendar" />
     <item
         android:id="@+id/blockingFragment"
-        android:icon="@drawable/ic_blocking"
-        android:title="Block" />
+        android:icon="@drawable/ic_account"
+        android:title="Profile" />
 </menu>

@@ -8,6 +8,8 @@ public class humain {
     private String password;
     private String objectifEnCours = null;
     private humain partenaire = null;
+    private int niveau;
+    private int experience;
 
     public humain() {
     }
@@ -17,12 +19,14 @@ public class humain {
         this.password = password;
     }
 
-    public humain(String name, String username, String email, String birthday, String password) {
+    public humain(String name, String username, String email, String birthday, String password, int niveau, int experience) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.birthday = birthday;
         this.password = password;
+        this.niveau = niveau;
+        this.experience = experience;
     }
 
     public String getName() {
@@ -79,5 +83,21 @@ public class humain {
 
     public void setPartenaire(humain partenaire) {
         this.partenaire = partenaire;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(short niveau) {
+        this.niveau = niveau;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(short experience) {
+        this.experience = experience;
     }
 }

@@ -48,7 +48,7 @@ public class Registration extends AppCompatActivity {
                 else{
 
                     //Enregistrement de l'utilisateur
-                    humain newUser = new humain(newName, newUserName, newEmail, newDate, newPassword);
+                    humain newUser = new humain(newName, newUserName, newEmail, newDate, newPassword, 1, 0);
                     registrationDatabase.child(newUserName).setValue(newUser);
                     Toast.makeText(Registration.this, "Inscription Validée", Toast.LENGTH_SHORT).show();
 

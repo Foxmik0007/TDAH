@@ -53,6 +53,9 @@ public class CalendarFragment extends Fragment {
         tache etudier = new tache("ITI 1200", "3 heures", "etudier");
         //etudier.setStatut("IN Progress");
 
+        previousTaskList.add(etudier);
+        previousTaskList.add(manger);
+
         currentTaskList.add(manger);
         currentTaskList.add(nager);
         currentTaskList.add(etudier);
@@ -74,15 +77,14 @@ public class CalendarFragment extends Fragment {
         tomorrow.setText(tDate);
 
         RecyclerViewHistoric recyclerAdapterYesterDay = new RecyclerViewHistoric(getContext(),previousTaskList);
-        RecyclerViewHistoric recyclerAdapterToday = new RecyclerViewHistoric(getContext(),currentTaskList);
-        RecyclerViewHistoric recyclerAdapterTomorrow = new RecyclerViewHistoric(getContext(),nextTaskList);
-
         recyclerViewYesterDay.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewYesterDay.setAdapter(recyclerAdapterYesterDay);
 
+        RecyclerViewHistoric recyclerAdapterToday = new RecyclerViewHistoric(getContext(),currentTaskList);
         recyclerViewToday.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewToday.setAdapter(recyclerAdapterToday);
 
+        RecyclerViewHistoric recyclerAdapterTomorrow = new RecyclerViewHistoric(getContext(),nextTaskList);
         recyclerViewTomorrow.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewTomorrow.setAdapter(recyclerAdapterTomorrow);
 

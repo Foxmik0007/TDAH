@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView) findViewById( R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        currentUser = Login.getCurrentUser();
+        currentUser = loadingToLobby.getCurrentUser();
 
 
         //Selection de Menufragment comme fragment d'accueil
