@@ -8,8 +8,8 @@ public class humain {
     private String password;
     private String objectifEnCours = null;
     private humain partenaire = null;
-    private int niveau = 0;
-    private int experience = 0;
+    private int niveau;
+    private int experience ;
 
     public humain() {
     }

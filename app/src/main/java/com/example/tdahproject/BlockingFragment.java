@@ -47,8 +47,8 @@ public class BlockingFragment extends Fragment {
         profileUserName.setText(currentUser.getUsername());
         profileMail.setText(currentUser.getEmail());
         profileBirthDay.setText(currentUser.getBirthday());
-        level.setText("3");
-        experience.setText("45" + "/100") ;
+        level.setText(Integer.toString(currentUser.getNiveau()));
+        experience.setText(Integer.toString(currentUser.getExperience())) ;
 
         // Inflate the layout for this fragment
         return view;

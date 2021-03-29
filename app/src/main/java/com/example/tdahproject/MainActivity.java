@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private NavController myController;
-    public static humain currentUser;
+    public static humain currentUser = loadingToLobby.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         //Parametrisation de la barre de tache
         bottomNavigationView = (BottomNavigationView) findViewById( R.id.bottomNav);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
-        currentUser = loadingToLobby.getCurrentUser();
 
 
         //Selection de Menufragment comme fragment d'accueil

@@ -98,7 +98,7 @@ public class loadingToLobby extends AppCompatActivity {
                         if (humain.getName() == listeDesUtilisateurs.get(i).getName())
                             verify = true;
                        if(humain.getUsername().equals(currentUser.getUsername()))
-                            currentUser = humain;
+                           currentUser = humain;
                     }
                     if (!verify)
                         listeDesUtilisateurs.add(humain);

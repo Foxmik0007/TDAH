@@ -36,7 +36,6 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.loginPassword);
         connect = (Button) findViewById(R.id.loginConnect);
         register = (Button) findViewById(R.id.loginRegister);
-        currentUser = new humain();
 
         String adminName = new String("Admin");
         String adminPassword= new String("ABC");
@@ -62,9 +61,8 @@ public class Login extends AppCompatActivity {
                 }
 
                 //Creation d'un utilisateur provisoire
-                currentUser.setUsername( idConnect );
-                currentUser.setPassword( idpassword );
-
+                currentUser = new humain(idConnect, idpassword);
+                
                 //Verification profil utilisateur si present
                 for (short i = 0; i < listUser.size(); i++){
                     if (currentUser.getUsername().equals(listUser.get(i).getUsername()) &&

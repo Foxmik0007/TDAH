@@ -31,6 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     static List<Objectif> ListeDesObjectifs;
     DatabaseReference taskUpdateDatabase;
     DatabaseReference userUpdateDatabase;
+    DatabaseReference XPUpdateDatabase;
     humain currentUser = MainActivity.getCurrentUser();
     public static Objectif currentGoal = new Objectif();
     Calendar date = Calendar.getInstance();
@@ -67,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         taskUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
         userUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation/" + currentUser.getUsername() + "/Main Task");
+        XPUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation");
 
 
             //Gestion du code couleur
@@ -97,10 +99,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
 
-        //Ajout du support de la base de données plus tard
+        //Validation d'une tache
         holder.validerTache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                calculXP(currentUser, ListeDesObjectifs.get(position), v);
 
 
                 //Mise à jour des données
@@ -127,10 +132,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
 
                 //Mise à jour de la base de donnée
+                XPUpdateDatabase.child(currentUser.getUsername()).setValue(currentUser);
                 taskUpdateDatabase.child(ListeDesObjectifs.get(position).getNom()).setValue(ListeDesObjectifs.get(position));
             }
         });
 
+        //Selection du main Goal
         holder.selectGoal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,6 +192,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 currentProgress = currentProgress + ordreDeProgression;
         }
         return currentProgress;
+    }
+
+    //Gestion des points de recompenses
+    public  void calculXP (humain personne, Objectif objectif, View view){
+        if (objectif.getDifficulté().equals("Easy")){
+            personne.setExperience( personne.getExperience() + 2);
+        }
+
+        if (objectif.getDifficulté().equals("Medium")){
+            personne.setExperience(personne.getExperience() +5);
+        }
+
+        if (objectif.getDifficulté().equals("Hard")){
+            personne.setExperience(personne.getExperience() + 10);
+        }
+
+        if (personne.getExperience() >= 100){
+            personne.setNiveau(personne.getNiveau() + 1);
+            personne.setExperience(personne.getExperience()-100);
+            Toast.makeText(view.getContext(), "Congrats, Level UP", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static Objectif getCurrentGoal() {
