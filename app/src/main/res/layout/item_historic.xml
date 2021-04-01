@@ -41,13 +41,14 @@
             android:text="TextView"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/historic_task_state"
-            android:layout_width="75dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/state"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
-            android:fontFamily="@font/patua_one"
-            android:text="TextView"
-            android:textSize="16sp" />
+            android:layout_marginStart="30dp"
+            app:cardBackgroundColor="#A4E61A1A"
+            app:cardCornerRadius="10dp" />
+
     </LinearLayout>
 
     <LinearLayout
