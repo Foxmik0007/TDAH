@@ -27,9 +27,9 @@ public class CalendarFragment extends Fragment {
     private TextView today;
     private TextView tomorrow;
     public static ArrayList<Objectif>ListeObjectif = loadingToLobby.getListDesObjectifs();
-    public ArrayList<tache> previousTaskList = new ArrayList<tache>();
-    public ArrayList<tache> currentTaskList = new ArrayList<tache>();
-    public ArrayList<tache> nextTaskList = new ArrayList<tache>();
+    private ArrayList<tache> previousTaskList = new ArrayList<tache>();
+    private ArrayList<tache> currentTaskList = new ArrayList<tache>();
+    private ArrayList<tache> nextTaskList = new ArrayList<tache>();
     Calendar currentDate = Calendar.getInstance();
 
 
@@ -53,15 +53,12 @@ public class CalendarFragment extends Fragment {
         tache etudier = new tache("ITI 1200", "3 heures", "etudier");
         //etudier.setStatut("IN Progress");
 
-        previousTaskList.add(etudier);
         previousTaskList.add(manger);
 
-        currentTaskList.add(manger);
-        currentTaskList.add(nager);
         currentTaskList.add(etudier);
 
         nextTaskList.add(nager);
-        nextTaskList.add(etudier);
+
 
 
         recyclerViewYesterDay = (RecyclerView) view.findViewById(R.id.recyclerViewYesterDay);
@@ -76,17 +73,27 @@ public class CalendarFragment extends Fragment {
         today.setText(cDate);
         tomorrow.setText(tDate);
 
+
+
+
+        LinearLayoutManager layoutManager
+                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerViewHistoric recyclerAdapterYesterDay = new RecyclerViewHistoric(getContext(),previousTaskList);
-        recyclerViewYesterDay.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewYesterDay.setLayoutManager(layoutManager);
         recyclerViewYesterDay.setAdapter(recyclerAdapterYesterDay);
+
+
 
         RecyclerViewHistoric recyclerAdapterToday = new RecyclerViewHistoric(getContext(),currentTaskList);
         recyclerViewToday.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewToday.setAdapter(recyclerAdapterToday);
 
+/*
         RecyclerViewHistoric recyclerAdapterTomorrow = new RecyclerViewHistoric(getContext(),nextTaskList);
         recyclerViewTomorrow.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewTomorrow.setAdapter(recyclerAdapterTomorrow);
+*/
+
 
 
 
@@ -96,6 +103,7 @@ public class CalendarFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 

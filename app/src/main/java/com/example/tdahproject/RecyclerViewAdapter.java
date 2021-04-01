@@ -67,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         taskUpdateDatabase = FirebaseDatabase.getInstance().getReference("Données Utilisateur/" + currentUser.getUsername() + "/Liste des Objectifs");
-        userUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation/" + currentUser.getUsername() + "/Main Task");
+        userUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation/" + currentUser.getUsername() + "/objectifEnCours");
         XPUpdateDatabase = FirebaseDatabase.getInstance().getReference("UserInformation");
 
 
@@ -142,9 +142,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 currentUser.setObjectifEnCours(ListeDesObjectifs.get(position).getNom());
-                userUpdateDatabase.setValue(ListeDesObjectifs.get(position).getNom());
                 currentUser.setPartenaire(ListeDesObjectifs.get(position).getPartner());
+                userUpdateDatabase.setValue(ListeDesObjectifs.get(position).getNom());
                 Toast.makeText(mContext, ListeDesObjectifs.get(position).getNom() + " is now the main task", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Fermer une tache
+        holder.close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                taskUpdateDatabase.child(ListeDesObjectifs.get(position).getNom()).setValue(null);
+                ListeDesObjectifs.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+                notifyItemRangeChanged(holder.getAdapterPosition(), ListeDesObjectifs.size());
+
+
             }
         });
     }
@@ -163,6 +176,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private Button validerTache;
         private Button selectGoal;
         private Drawable color;
+        private Button close;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -173,8 +187,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             progressBar = (ProgressBar) itemView.findViewById(R.id.task_progressBar);
             validerTache = (Button) itemView.findViewById(R.id.validerTache);
             selectGoal = (Button) itemView.findViewById(R.id.selectObjective);
-
-
+            close = (Button) itemView.findViewById(R.id.task_close);
         }
 
 
