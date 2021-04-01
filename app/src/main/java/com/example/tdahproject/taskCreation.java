@@ -87,7 +87,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
 
         //Recuperation de la date d'aujoud'hui
         Calendar calendar = Calendar.getInstance();
-        dateDeCreation = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        dateDeCreation = DateFormat.getDateInstance(DateFormat.LONG).format(calendar.getTime());
 
         listeDeNouvelleTache = new ArrayList<>();
 
@@ -219,7 +219,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
         calendar.set(Calendar.YEAR,year);
         calendar.set(Calendar.MONTH, month);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        dueDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        dueDate = DateFormat.getDateInstance(DateFormat.LONG).format(calendar.getTime());
 
     }
 

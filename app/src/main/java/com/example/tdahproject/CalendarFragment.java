@@ -1,7 +1,10 @@
 package com.example.tdahproject;
 
+import android.app.usage.UsageEvents;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,29 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.TextView;
 
 import java.text.DateFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CalendarFragment extends Fragment {
 
-    View v;
     private RecyclerView recyclerViewYesterDay;
-    private RecyclerView recyclerViewToday;
-    private RecyclerView recyclerViewTomorrow;
-    private TextView yesterday;
-    private TextView today;
-    private TextView tomorrow;
+    private CalendarView calendarView;
+    private TextView dateSelected;
+    private String currentWeek;
     public static ArrayList<Objectif>ListeObjectif = loadingToLobby.getListDesObjectifs();
-    private ArrayList<tache> previousTaskList = new ArrayList<tache>();
-    private ArrayList<tache> currentTaskList = new ArrayList<tache>();
-    private ArrayList<tache> nextTaskList = new ArrayList<tache>();
-    Calendar currentDate = Calendar.getInstance();
-
-
+    public ArrayList<Objectif>ListeObjectifDeLaSemaine = new ArrayList<>();
+    private ArrayList<tache> goalList = new ArrayList<tache>();
     public CalendarFragment() {
         // Required empty public constructor
     }
@@ -42,9 +41,6 @@ public class CalendarFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate( R.layout.fragment_calendar, container, false );
-        String cDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentDate.getTime());
-        String yDate = getYesterdayDateString();
-        String tDate = getTomorrowDateString();
 
         tache manger = new tache("Aller au marcher", "2 heures" , "Manger" );
         //manger.setStatut("IN Progess");
@@ -53,47 +49,20 @@ public class CalendarFragment extends Fragment {
         tache etudier = new tache("ITI 1200", "3 heures", "etudier");
         //etudier.setStatut("IN Progress");
 
-        previousTaskList.add(manger);
+         getListDeLaSemaine(ListeObjectif, ListeObjectifDeLaSemaine);
+        calendarView = (CalendarView) view.findViewById(R.id.calendarView);
+        dateSelected = (TextView) view.findViewById(R.id.dateSelected);
+        recyclerViewYesterDay = (RecyclerView) view.findViewById(R.id.recycleViewCalendar);
 
-        currentTaskList.add(etudier);
-
-        nextTaskList.add(nager);
-
-
-
-        recyclerViewYesterDay = (RecyclerView) view.findViewById(R.id.recyclerViewYesterDay);
-        recyclerViewToday = (RecyclerView) view.findViewById(R.id.recyclerViewToday);
-        recyclerViewTomorrow = (RecyclerView) view.findViewById(R.id.recyclerViewTomorrow);
-
-        yesterday = (TextView) view.findViewById(R.id.previousDate);
-        today = (TextView) view.findViewById(R.id.currentDate);
-        tomorrow = (TextView) view.findViewById(R.id.nextDate);
-
-        yesterday.setText(yDate);
-        today.setText(cDate);
-        tomorrow.setText(tDate);
+        String dayOfWeek = new String(Long.toString(calendarView.getFirstDayOfWeek()));
+        currentWeek = dayOfWeek + " " + getWeek();
+        dateSelected.setText(currentWeek);
 
 
 
-
-        LinearLayoutManager layoutManager
-                = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        RecyclerViewHistoric recyclerAdapterYesterDay = new RecyclerViewHistoric(getContext(),previousTaskList);
-        recyclerViewYesterDay.setLayoutManager(layoutManager);
+        RecyclerViewHistoric recyclerAdapterYesterDay = new RecyclerViewHistoric(getContext(), ListeObjectifDeLaSemaine);
+        recyclerViewYesterDay.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewYesterDay.setAdapter(recyclerAdapterYesterDay);
-
-
-
-        RecyclerViewHistoric recyclerAdapterToday = new RecyclerViewHistoric(getContext(),currentTaskList);
-        recyclerViewToday.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerViewToday.setAdapter(recyclerAdapterToday);
-
-/*
-        RecyclerViewHistoric recyclerAdapterTomorrow = new RecyclerViewHistoric(getContext(),nextTaskList);
-        recyclerViewTomorrow.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerViewTomorrow.setAdapter(recyclerAdapterTomorrow);
-*/
-
 
 
 
@@ -107,34 +76,76 @@ public class CalendarFragment extends Fragment {
 
     }
 
-    public void previousCompleteTab (ArrayList<tache> listeDeTache, ArrayList<Objectif> listeObjectif){
+    /*public void previousCompleteTab (ArrayList<tache> listeDeTache, ArrayList<Objectif> listeObjectif){
     for (short i = 0; i < listeObjectif.size(); i++){
         for (short k = 0; i< listeObjectif.get(i).getListeDeTache().size(); k++){
             if (listeObjectif.get(i).getListeDeTache().get(k).getDateFin().equals(getYesterdayDateString()))
                 listeDeTache.add(listeObjectif.get(i).getListeDeTache().get(k));
         }
     }
-    }
-
-    //Date Getters
-    private String getCurrentDateString(){
-        Calendar date = Calendar.getInstance();
-        String currentDate =  DateFormat.getDateInstance(DateFormat.FULL).toString();
-
-        return currentDate;
-    }
+    }*/
+/*
     private String getYesterdayDateString() {
-        DateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -1);
         return dateFormat.format(cal.getTime());
     }
     private String getTomorrowDateString() {
-        DateFormat dateFormat = new SimpleDateFormat("EEEE dd MMMM yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, +1);
         return dateFormat.format(cal.getTime());
     }
+*/
+
+    private Date stringToDate (String date1){
+
+        if(date1==null) return null;
+
+        String patern = new String("dd MMMM yyyy");
+        ParsePosition pos = new ParsePosition(0);
+        SimpleDateFormat simpledateformat = new SimpleDateFormat(patern);
+        Date stringDate = simpledateformat.parse(date1, pos);
+        return stringDate;
+    }
 
 
+    private String getWeek (){
+
+        DateFormat dateFormat = new SimpleDateFormat("MMMM yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, +1);
+
+        return  dateFormat.format(cal.getTime());
+    }
+
+    private String getSevenDays(){
+        DateFormat dateFormat = new SimpleDateFormat("DD MMMM yyyy");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, +1);
+
+        return  dateFormat.format(cal.getTime());
+    }
+
+    private void getListDeLaSemaine(ArrayList<Objectif>All, ArrayList<Objectif> listeObjectifFiltree){
+        for (short i = 0; i < All.size(); i++){
+            if (dateCompare(All.get(i).getDueDate())){
+                listeObjectifFiltree.add(All.get(i));
+            }
+        }
+    }
+
+    private Boolean dateCompare(String date1){
+        boolean comparaison = false;
+
+        Date date01 = stringToDate(date1);
+        Date date02 = stringToDate(getSevenDays());
+
+        if (date02.after(date01)){
+            comparaison = true;
+        }
+
+        return comparaison;
+    }
 }

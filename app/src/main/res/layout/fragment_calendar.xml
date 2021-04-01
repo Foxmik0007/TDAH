@@ -11,12 +11,25 @@
         android:layout_height="match_parent"
         android:background="@drawable/whitew">
 
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="336dp"
+            android:layout_height="272dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/custom_tab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="Task History"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/marko_one"
+            android:text="Calendar"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,117 +38,39 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/marko_one"
-            android:text="Yesterday :"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#2196F3"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/patua_one"
+            android:text="Week of : "
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.095"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewYesterDay"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_tab"
+        <TextView
+            android:id="@+id/dateSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/patua_one"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/textView26"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/marko_one"
-            android:text="Today : "
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#2196F3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.087"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewYesterDay" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewToday"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_tab"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/marko_one"
-            android:text="Tomorrow : "
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#2196F3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.076"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewToday" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewTomorrow"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_tab"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-        <TextView
-            android:id="@+id/previousDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/asul"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#009688"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.114"
             app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-        <TextView
-            android:id="@+id/currentDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/asul"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#009688"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewCalendar"
+            android:layout_width="340dp"
+            android:layout_height="287dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_back"
+            android:paddingStart="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.212"
-            app:layout_constraintStart_toEndOf="@+id/textView26"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewYesterDay" />
-
-        <TextView
-            android:id="@+id/nextDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/asul"
-            android:text="TextView"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="#009688"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toEndOf="@+id/textView27"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerViewToday" />
-
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.171" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

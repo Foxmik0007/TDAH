@@ -84,7 +84,7 @@ public class MenuFragment extends Fragment {
         currentTaskName.setText(currentUser.getObjectifEnCours());
 
         Calendar calendar = Calendar.getInstance();
-        String date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        String date = DateFormat.getDateInstance(DateFormat.LONG).format(calendar.getTime());
 
         for (short i = 0; i < loadingToLobby.getListDesObjectifs().size(); i++) {
             if (loadingToLobby.getListDesObjectifs().get(i).getNom().equals(currentUser.getObjectifEnCours())) {
@@ -113,7 +113,7 @@ public class MenuFragment extends Fragment {
         try {
             Date date1;
             Date date2;
-            SimpleDateFormat dates = new SimpleDateFormat("EEEE dd MMMM yyyy");
+            SimpleDateFormat dates = new SimpleDateFormat("dd MMMM yyyy");
             date1 = dates.parse(fromDate);
             date2 = dates.parse(toDate);
             long difference = Math.abs(date1.getTime() - date2.getTime());
