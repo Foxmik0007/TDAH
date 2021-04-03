@@ -7,11 +7,14 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class taskCreation extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+public class taskCreation extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener {
 
     public static humain currentUser;
     public static ArrayList <Objectif> listeDesObjectifs = loadingToLobby.getListDesObjectifs();
@@ -42,6 +45,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
     private CheckBox checkBoxHard;
     private SeekBar seekBarImportance;
     private TextView importance;
+    private Spinner importanceSpinner;
     private String difficulté;
     private String niveauImportance;
     private ArrayList<tache> listeDeNouvelleTache;
@@ -75,7 +79,8 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
         nomDeTache = (EditText) findViewById(R.id.stepName_creation);
         dureeDeTache = (EditText) findViewById(R.id.durationCreation);
 
-        importance = (TextView) findViewById(R.id.lvlOfImportance);
+       // importance = (TextView) findViewById(R.id.lvlOfImportance);
+        importanceSpinner = (Spinner) findViewById(R.id.importanceSpinner);
 
         //CheckBox
         checkBoxEasy = (CheckBox) findViewById(R.id.checkBoxEasy);
@@ -83,7 +88,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
         checkBoxHard = (CheckBox) findViewById(R.id.checkBoxHard);
 
         //SeekBar
-        seekBarImportance = (SeekBar) findViewById(R.id.seekBarImportance);
+       // seekBarImportance = (SeekBar) findViewById(R.id.seekBarImportance);
 
         //Recuperation de la date d'aujoud'hui
         Calendar calendar = Calendar.getInstance();
@@ -139,7 +144,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
         });
 
         //Setup du seekBar d'importance
-        seekBarImportance.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        /*seekBarImportance.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (progress < 25){
@@ -171,6 +176,12 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
 
             }
         });
+*/
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.importance, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        importanceSpinner.setAdapter(adapter);
+        importanceSpinner.setOnItemSelectedListener(this);
+
 
         //Button settings du partenaire
         choosePartner.setOnClickListener(new View.OnClickListener() {
@@ -234,5 +245,17 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
 
     public static void setNouveauPartenaire(humain nouveauPartenaire) {
         taskCreation.nouveauPartenaire = nouveauPartenaire;
+    }
+
+    //Spinner Listener
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String importance = parent.getItemAtPosition(position).toString();
+        niveauImportance = importance;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

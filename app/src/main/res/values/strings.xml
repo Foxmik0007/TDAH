@@ -2,4 +2,11 @@
     <string name="app_name">TDAH project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="importance">
+        <item>Not Important</item>
+        <item>Not Very important</item>
+        <item>Important</item>
+        <item>Very important</item>
+    </string-array>
 </resources>
