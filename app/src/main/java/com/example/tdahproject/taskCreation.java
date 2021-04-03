@@ -110,22 +110,31 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
         checkBoxEasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBoxEasy.isChecked())
+                if(checkBoxEasy.isChecked()){
+                    checkBoxMedium.setChecked(false);
+                    checkBoxHard.setChecked(false);
                     difficulté = "Easy";
+                }
             }
         });
         checkBoxMedium.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBoxMedium.isChecked())
+                if(checkBoxMedium.isChecked()){
+                    checkBoxEasy.setChecked(false);
+                    checkBoxHard.setChecked(false);
                     difficulté = "Medium";
+                }
             }
         });
         checkBoxHard.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View v) {
-                if(checkBoxHard.isChecked())
+                if(checkBoxHard.isChecked()){
+                    checkBoxEasy.setChecked(false);
+                    checkBoxMedium.setChecked(false);
                     difficulté = "Hard";
+                }
             }
         });
 

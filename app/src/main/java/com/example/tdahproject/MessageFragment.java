@@ -32,10 +32,10 @@ public class MessageFragment extends Fragment {
     humain currentUser = MainActivity.getCurrentUser();
     View view;
     private RecyclerView recyclerView;
-    private List<Message> messageList;
-    RecycleViewMessage recycleViewMessage;
+    private static List<Message> messageList;
+    static RecycleViewMessage recycleViewMessage;
 
-    ArrayList<Message> messageArrayList = new ArrayList<>();
+    static ArrayList<Message> messageArrayList = new ArrayList<>();
     private Button send;
     EditText messageSend;
 
