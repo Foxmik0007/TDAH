@@ -34,6 +34,7 @@ public class MenuFragment extends Fragment {
     private TextView currentStartDate;
     private TextView currentDueDate;
     private TextView currentRemainingTime;
+    private TextView currentGoalType;
     public static humain currentUser;
 
     public MenuFragment() {
@@ -59,6 +60,7 @@ public class MenuFragment extends Fragment {
         currentStartDate = (TextView) view.findViewById(R.id.current_start_date);
         currentDueDate = (TextView) view.findViewById(R.id.current_due_date);
         currentRemainingTime = (TextView) view.findViewById(R.id.current_remaining_time);
+        currentGoalType = (TextView) view.findViewById(R.id.menu_goal_type);
 
         setMenu();
 
@@ -94,6 +96,7 @@ public class MenuFragment extends Fragment {
                 currentPartner.setText(loadingToLobby.getListDesObjectifs().get(i).getPartner().getName());
                 currentStartDate.setText(loadingToLobby.getListDesObjectifs().get(i).getDateDeCreation());
                 currentDueDate.setText(loadingToLobby.getListDesObjectifs().get(i).getDueDate());
+                currentGoalType.setText(loadingToLobby.getListDesObjectifs().get(i).getType() + " Goal");
 
                 getDaysDifference(date, loadingToLobby.getListDesObjectifs().get(i).getDueDate());
 

@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whitew"
+    android:background="@drawable/thefinalback"
     tools:context=".Login">
 
     <EditText
         android:id="@+id/loginID"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="232dp"
         android:background="@drawable/custom_input_login"
         android:drawableStart="@drawable/ic_account"
         android:drawablePadding="7dp"
@@ -22,16 +21,16 @@
         android:paddingStart="10dp"
         android:textColor="#474747"
         android:textColorHint="#B3B3CC"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.126" />
 
     <EditText
         android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="64dp"
         android:background="@drawable/custom_input_login"
         android:drawableStart="@drawable/ic_baseline_lock_24"
         android:drawablePadding="7dp"
@@ -42,48 +41,79 @@
         android:paddingStart="10dp"
         android:textColor="#474747"
         android:textColorHint="#B3B3CC"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginID" />
+        app:layout_constraintTop_toBottomOf="@+id/loginID"
+        app:layout_constraintVertical_bias="0.099" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginConnect"
         android:layout_width="200dp"
         android:layout_height="46dp"
-        android:layout_marginTop="84dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/patua_one"
         android:text="Connect"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword"
+        app:layout_constraintVertical_bias="0.25" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginRegister"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:background="@drawable/custom_button"
         android:fontFamily="@font/patua_one"
         android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginConnect" />
+        app:layout_constraintTop_toBottomOf="@+id/loginConnect"
+        app:layout_constraintVertical_bias="0.218" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
         android:fontFamily="@font/patua_one"
-        android:text="Welcome, Please identify yourself"
+        android:text="Welcome to"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#E6C387"
+        android:textColor="#F1C58E"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.173" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/patua_one"
+        android:textColor="#FF6868"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginConnect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/patua_one"
+        android:text="MindU"
+        android:textColor="#B2DF8EF1"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/loginID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645" />
 </androidx.constraintlayout.widget.ConstraintLayout>

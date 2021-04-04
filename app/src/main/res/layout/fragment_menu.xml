@@ -80,6 +80,7 @@
             tools:visibility="visible" />
 
         <LinearLayout
+            android:id="@+id/linearLayout10"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginTop="8dp"
@@ -301,6 +302,35 @@
                 android:fontFamily="@font/patua_one"
                 android:paddingStart="10dp"
                 android:textColor="#5C5C5C" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/marko_one"
+                android:text="type : "
+                android:textColor="#474747"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/menu_goal_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/patua_one"
+                android:paddingStart="10dp"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

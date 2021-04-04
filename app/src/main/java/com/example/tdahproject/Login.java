@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity {
 
     private EditText userName, password;
     private Button connect, register;
+    private TextView errorMessage;
 
     private static humain currentUser;
 
@@ -36,6 +38,7 @@ public class Login extends AppCompatActivity {
         password = (EditText) findViewById(R.id.loginPassword);
         connect = (Button) findViewById(R.id.loginConnect);
         register = (Button) findViewById(R.id.loginRegister);
+        errorMessage = (TextView) findViewById(R.id.errorMessage);
 
         String adminName = new String("Admin");
         String adminPassword= new String("ABC");
@@ -49,6 +52,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                boolean verify = false;
+
                 //Recuperation des données saisies
                 String idConnect = userName.getText().toString();
                 String idpassword = password.getText().toString();
@@ -57,6 +62,7 @@ public class Login extends AppCompatActivity {
                 if (idConnect.equals(adminName) && idpassword.equals(adminPassword)) {
                     Intent intent = new Intent( getApplicationContext(), loadingToLobby.class );
                     currentUser = Admin;
+                    verify = true;
                     startActivity( intent );
                 }
 
@@ -67,10 +73,16 @@ public class Login extends AppCompatActivity {
                 for (short i = 0; i < listUser.size(); i++){
                     if (currentUser.getUsername().equals(listUser.get(i).getUsername()) &&
                             currentUser.getPassword().equals( listUser.get(i).getPassword() )) {
+                        verify = true;
                         Intent intent = new Intent(getApplicationContext(), loadingToLobby.class);
                         startActivity(intent);
                     }
                 }
+
+                if(!verify){
+                    errorMessage.setText("Username or Incorrect password \n \t Please, try again");
+                }
+
 
             }
         });

@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="108dp"
             android:fontFamily="@font/patua_one"
             android:text="Difficulty :"
             android:textColor="#B5B5B5"
@@ -70,7 +70,7 @@
             android:id="@+id/checkBoxEasy"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="160dp"
             android:layout_marginEnd="208dp"
             android:fontFamily="@font/patua_one"
             android:text="Easy"
@@ -186,12 +186,12 @@
             android:layout_width="119dp"
             android:layout_height="42dp"
             android:layout_marginStart="64dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/custom_button"
             android:fontFamily="@font/patua_one"
             android:text="Add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toEndOf="@+id/durationCreation"
             app:layout_constraintTop_toBottomOf="@+id/stepName_creation" />
 
@@ -233,6 +233,65 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkBoxHard"
             app:layout_constraintVertical_bias="0.15" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/patua_one"
+            android:text="Select Goal Type : "
+            android:textColor="#A5A5A5"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.096"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/goalName_create" />
+
+        <CheckBox
+            android:id="@+id/checkUnique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/patua_one"
+            android:text="Unique Goal"
+            android:textColor="#676666"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toEndOf="@+id/checkWeekly"
+            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+        <CheckBox
+            android:id="@+id/checkDaily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/patua_one"
+            android:text="Daily Goal"
+            android:textColor="#676666"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.074"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView26"
+            app:layout_constraintVertical_bias="0.266" />
+
+        <CheckBox
+            android:id="@+id/checkWeekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/patua_one"
+            android:text="Weekly Goal"
+            android:textColor="#676666"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.038"
+            app:layout_constraintStart_toEndOf="@+id/checkDaily"
+            app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

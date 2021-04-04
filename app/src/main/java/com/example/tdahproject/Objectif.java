@@ -14,13 +14,14 @@ public class Objectif {
     private tache nextStep;
     private String etat;
     private humain partner;
+    private String type;
 
     private Message messagerie;
 
     public Objectif() {
     }
 
-    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat, Message messagerie, String dueDate) {
+    public Objectif(String nom, String difficulté, String importance, ArrayList<tache> listeDeTache, String dateDeCreation, int progression, String etat, Message messagerie, String dueDate, String type ) {
         this.nom = nom;
         this.difficulté = difficulté;
         this.importance = importance;
@@ -30,6 +31,7 @@ public class Objectif {
         this.progression = progression;
         this.etat = etat;
         this.messagerie = messagerie;
+        this.type = type;
 
     }
 
@@ -133,5 +135,13 @@ public class Objectif {
 
     public void setPartner(humain partner) {
         this.partner = partner;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

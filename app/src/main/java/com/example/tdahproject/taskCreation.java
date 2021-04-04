@@ -43,11 +43,15 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
     private CheckBox checkBoxEasy;
     private CheckBox checkBoxMedium;
     private CheckBox checkBoxHard;
+    private CheckBox checkBoxDaily;
+    private CheckBox checkBoxWeekly;
+    private CheckBox checkBoxUnique;
     private SeekBar seekBarImportance;
     private TextView importance;
     private Spinner importanceSpinner;
     private String difficulté;
     private String niveauImportance;
+    private String goalType;
     private ArrayList<tache> listeDeNouvelleTache;
     public static humain nouveauPartenaire;
     private Message message;
@@ -86,9 +90,9 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
         checkBoxEasy = (CheckBox) findViewById(R.id.checkBoxEasy);
         checkBoxMedium = (CheckBox) findViewById(R.id.checkBoxMedium);
         checkBoxHard = (CheckBox) findViewById(R.id.checkBoxHard);
-
-        //SeekBar
-       // seekBarImportance = (SeekBar) findViewById(R.id.seekBarImportance);
+        checkBoxDaily = (CheckBox) findViewById(R.id.checkDaily);
+        checkBoxWeekly = (CheckBox) findViewById(R.id.checkWeekly);
+        checkBoxUnique = (CheckBox) findViewById(R.id.checkUnique);
 
         //Recuperation de la date d'aujoud'hui
         Calendar calendar = Calendar.getInstance();
@@ -143,6 +147,39 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
+        checkBoxDaily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxDaily.isChecked()){
+                    checkBoxWeekly.setChecked(false);
+                    checkBoxUnique.setChecked(false);
+                    goalType = "Daily";
+                }
+            }
+        });
+
+        checkBoxWeekly.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxWeekly.isChecked()){
+                    checkBoxDaily.setChecked(false);
+                    checkBoxUnique.setChecked(false);
+                    goalType = "Weekly";
+                }
+            }
+        });
+
+        checkBoxUnique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxUnique.isChecked()){
+                    checkBoxDaily.setChecked(false);
+                    checkBoxWeekly.setChecked(false);
+                    goalType = "Unique";
+                }
+            }
+        });
+
         //Setup du seekBar d'importance
         /*seekBarImportance.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -177,6 +214,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
             }
         });
 */
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.importance, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         importanceSpinner.setAdapter(adapter);
@@ -218,6 +256,7 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
                 nouvelObjectif.setEtat("IN PROCESS");
                 nouvelObjectif.setMessagerie(message);
                 nouvelObjectif.setPartner(nouveauPartenaire);
+                nouvelObjectif.setType(goalType);
 
                 //Mise à jour de la base de donnée en ligne
                 GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
