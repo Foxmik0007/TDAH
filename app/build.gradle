@@ -4,11 +4,19 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        config {
+            storeFile file('D:\\COURS\\Certifications\\MindU_keystore_file.jks')
+            storePassword 'Ant@nanarivo101'
+            keyAlias 'key0'
+            keyPassword 'Ant@nanarivo101'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.tdahproject"
+        applicationId "com.volanadesign.tdahproject"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
@@ -21,6 +29,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     compileOptions {

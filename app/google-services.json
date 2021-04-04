@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "337015478396",
+    "firebase_url": "https://tdah-2889a-default-rtdb.firebaseio.com",
     "project_id": "tdah-2889a",
     "storage_bucket": "tdah-2889a.appspot.com"
   },
@@ -10,6 +11,35 @@
         "mobilesdk_app_id": "1:337015478396:android:0b9af3406537ad003ed1f9",
         "android_client_info": {
           "package_name": "com.example.tdahproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "337015478396-4qkmm68hs6c05d8t945gpn0k39v3dcd1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh6F7CLsgHXq3JBN_gyO7qBXBjGDkzJMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "337015478396-4qkmm68hs6c05d8t945gpn0k39v3dcd1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337015478396:android:fdaf09d52d2e72993ed1f9",
+        "android_client_info": {
+          "package_name": "com.volanadesign.tdahproject"
         }
       },
       "oauth_client": [

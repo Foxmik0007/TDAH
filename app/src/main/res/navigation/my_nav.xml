@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.tdahproject.MenuFragment"
+        android:name="com.volanadesign.tdahproject.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" />
     <fragment
         android:id="@+id/taskFragment"
-        android:name="com.example.tdahproject.TaskFragment"
+        android:name="com.volanadesign.tdahproject.TaskFragment"
         android:label="fragment_task"
         tools:layout="@layout/fragment_task" />
     <fragment
         android:id="@+id/messageFragment"
-        android:name="com.example.tdahproject.MessageFragment"
+        android:name="com.volanadesign.tdahproject.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" />
     <fragment
         android:id="@+id/calendarFragment"
-        android:name="com.example.tdahproject.CalendarFragment"
+        android:name="com.volanadesign.tdahproject.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/blockingFragment"
-        android:name="com.example.tdahproject.BlockingFragment"
+        android:name="com.volanadesign.tdahproject.BlockingFragment"
         android:label="fragment_blocking"
         tools:layout="@layout/fragment_blocking" />
 </navigation>
