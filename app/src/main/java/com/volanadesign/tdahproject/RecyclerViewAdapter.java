@@ -219,7 +219,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             personne.setExperience(personne.getExperience() + 10);
         }
 
-        if (personne.getExperience() >= 100){
+        if (personne.getExperience() >= 30){
             personne.setNiveau(personne.getNiveau() + 1);
             personne.setExperience(personne.getExperience()-100);
             Toast.makeText(view.getContext(), "Congrats, Level UP", Toast.LENGTH_SHORT).show();

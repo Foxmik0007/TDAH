@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 if(!verify){
-                    errorMessage.setText("Username or Incorrect password \n \t Please, try again");
+                    errorMessage.setText("Incorrect Username or Incorrect password \n \t Please, try again");
                 }
 
 

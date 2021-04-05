@@ -33,8 +33,8 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
     private EditText nomDeObjectif;
     private EditText nomDeTache;
     private EditText dureeDeTache;
-    private String dateDeCreation;
-    private String dueDate;
+    private String dateDeCreation = null;
+    private String dueDate = null;
     private Button confirmerCreation;
     private Button ajouterTache;
     private Button choosePartner;
@@ -48,11 +48,12 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
     private SeekBar seekBarImportance;
     private TextView importance;
     private Spinner importanceSpinner;
+    private String nomObjectif;
     private String difficulté;
     private String niveauImportance;
     private String goalType;
     private ArrayList<tache> listeDeNouvelleTache;
-    public static humain nouveauPartenaire;
+    public static humain nouveauPartenaire = null;
     private Message message;
     private Objectif nouvelObjectif = new Objectif();
 
@@ -245,26 +246,41 @@ public class taskCreation extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(View v) {
 
-                nouvelObjectif.setNom(nomDeObjectif.getText().toString().trim());
-                nouvelObjectif.setDateDeCreation(dateDeCreation);
-                nouvelObjectif.setDueDate(dueDate);
-                nouvelObjectif.setDifficulté(difficulté);
-                nouvelObjectif.setImportance(niveauImportance);
-                nouvelObjectif.setListeDeTache(listeDeNouvelleTache);
-                nouvelObjectif.setProgression(0);
-                nouvelObjectif.setEtat("IN PROCESS");
-                nouvelObjectif.setMessagerie(message);
-                nouvelObjectif.setPartner(nouveauPartenaire);
-                nouvelObjectif.setType(goalType);
+                nomObjectif = nomDeObjectif.getText().toString();
+                if (nomObjectif.isEmpty() || dateDeCreation.isEmpty() || dueDate.isEmpty() || difficulté.isEmpty()
+                        || niveauImportance.isEmpty() || goalType.isEmpty()){
+                    Toast.makeText(taskCreation.this, "Error - Please complete all required field", Toast.LENGTH_SHORT).show();
+                } else if (nouveauPartenaire == null){
+                    Toast.makeText(taskCreation.this, "Error - Please Select a partner", Toast.LENGTH_SHORT).show();
+                }else {
 
-                //Mise à jour de la base de donnée en ligne
-                GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
-                Toast.makeText(taskCreation.this, "Objectif ajoutée", Toast.LENGTH_SHORT).show();
+                    nouvelObjectif.setNom(nomDeObjectif.getText().toString().trim());
+                    nouvelObjectif.setDateDeCreation(dateDeCreation);
+                    nouvelObjectif.setDueDate(dueDate);
+                    nouvelObjectif.setDifficulté(difficulté);
+                    nouvelObjectif.setImportance(niveauImportance);
+                    nouvelObjectif.setListeDeTache(listeDeNouvelleTache);
+                    nouvelObjectif.setProgression(0);
+                    nouvelObjectif.setEtat("IN PROCESS");
+                    nouvelObjectif.setMessagerie(message);
+                    nouvelObjectif.setPartner(nouveauPartenaire);
+                    nouvelObjectif.setType(goalType);
 
-                //Mise à jour de la base de données locale
+                    //Mise à jour de la base de donnée en ligne
+                    GOALDATABASE.child(nouvelObjectif.getNom()).setValue(nouvelObjectif);
+                    Toast.makeText(taskCreation.this, "Goal Added", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                    //Mise à jour de la base de données locale
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+
+
+
+
+
+
             }
         });
 
