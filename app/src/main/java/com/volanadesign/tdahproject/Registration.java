@@ -43,7 +43,7 @@ public class Registration extends AppCompatActivity {
                 String newPassword = password.getText().toString().trim();
 
                 //Gestion des erreurs
-                if (newName.equals(null) || newUserName.equals(null) || newEmail.equals(null) || newDate.equals(null) || newPassword.equals(null))
+                if (newName.isEmpty() || newUserName.isEmpty() || newEmail.isEmpty() || newDate.isEmpty() || newPassword.isEmpty())
                     Toast.makeText(Registration.this, "Error - Please review your registration", Toast.LENGTH_SHORT).show();
                 else{
 
